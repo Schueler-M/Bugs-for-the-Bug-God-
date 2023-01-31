@@ -12,9 +12,16 @@ public class Player : MonoBehaviour
     Vector2 move_vector;
     Rigidbody2D rb;
     float swapCooldown = 0.0f;
+    GameObject ui_game_obj;
+    MidGameUI ui_script_obj;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        ui_game_obj = GameObject.Find("MidGameUI");
+        ui_script_obj = ui_game_obj.GetComponent<MidGameUI>();
+        ui_script_obj.addSprite(0, playerBugs[2].GetComponent<SpriteRenderer>().sprite);
+        ui_script_obj.addSprite(1, playerBugs[0].GetComponent<SpriteRenderer>().sprite);
+        ui_script_obj.addSprite(2, playerBugs[1].GetComponent<SpriteRenderer>().sprite);
     }
 
     void Update()
@@ -40,7 +47,24 @@ public class Player : MonoBehaviour
             {
                 index = 2;
             }
+            ui_script_obj.addSprite(1, playerBugs[index].GetComponent<SpriteRenderer>().sprite);
+            if (index <= 0)
+            {
+                ui_script_obj.addSprite(0, playerBugs[2].GetComponent<SpriteRenderer>().sprite);
+                ui_script_obj.addSprite(2, playerBugs[1].GetComponent<SpriteRenderer>().sprite);
+            }
+            else if (index >= 2)
+            {
+                ui_script_obj.addSprite(0, playerBugs[1].GetComponent<SpriteRenderer>().sprite);
+                ui_script_obj.addSprite(2, playerBugs[0].GetComponent<SpriteRenderer>().sprite);
+            }
+            else
+            {
+                ui_script_obj.addSprite(0, playerBugs[0].GetComponent<SpriteRenderer>().sprite);
+                ui_script_obj.addSprite(2, playerBugs[2].GetComponent<SpriteRenderer>().sprite);
+            }
             playerBugs[index].gameObject.SetActive(true);
+
         }
     }
     public void SwapRight(InputAction.CallbackContext context)
@@ -54,6 +78,26 @@ public class Player : MonoBehaviour
             if (index > 2)
             {
                 index = 0;
+            }
+            if (index < 0)
+            {
+                index = 2;
+            }
+            ui_script_obj.addSprite(1, playerBugs[index].GetComponent<SpriteRenderer>().sprite);
+            if (index <= 0)
+            {
+                ui_script_obj.addSprite(0, playerBugs[2].GetComponent<SpriteRenderer>().sprite);
+                ui_script_obj.addSprite(2, playerBugs[1].GetComponent<SpriteRenderer>().sprite);
+            }
+            else if (index >= 2)
+            {
+                ui_script_obj.addSprite(0, playerBugs[1].GetComponent<SpriteRenderer>().sprite);
+                ui_script_obj.addSprite(2, playerBugs[0].GetComponent<SpriteRenderer>().sprite);
+            }
+            else
+            {
+                ui_script_obj.addSprite(0, playerBugs[0].GetComponent<SpriteRenderer>().sprite);
+                ui_script_obj.addSprite(2, playerBugs[2].GetComponent<SpriteRenderer>().sprite);
             }
             playerBugs[index].gameObject.SetActive(true);
         }
