@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
         ui_script_obj.addSprite(0, playerBugs[2].GetComponent<SpriteRenderer>().sprite);
         ui_script_obj.addSprite(1, playerBugs[0].GetComponent<SpriteRenderer>().sprite);
         ui_script_obj.addSprite(2, playerBugs[1].GetComponent<SpriteRenderer>().sprite);
+        print("Changed Images");
     }
 
     void Update()
