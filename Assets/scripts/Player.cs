@@ -10,27 +10,28 @@ public class Player : MonoBehaviour
     int index = 0;
     public int speed = 1;
     Vector2 move_vector;
-    Rigidbody2D rb;
+    Rigidbody rb;
     float swapCooldown = 0.0f;
     GameObject ui_game_obj;
     MidGameUI ui_script_obj;
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
         ui_game_obj = GameObject.Find("MidGameUI");
         ui_script_obj = ui_game_obj.GetComponent<MidGameUI>();
-        ui_script_obj.addSprite(0, playerBugs[2].GetComponent<SpriteRenderer>().sprite);
-        ui_script_obj.addSprite(1, playerBugs[0].GetComponent<SpriteRenderer>().sprite);
-        ui_script_obj.addSprite(2, playerBugs[1].GetComponent<SpriteRenderer>().sprite);
-        print("Changed Images");
+        StartCoroutine(getStartImages());
+        //ui_script_obj.addSprite(0, playerBugs[2].GetComponent<SpriteRenderer>().sprite);
+        //ui_script_obj.addSprite(1, playerBugs[0].GetComponent<SpriteRenderer>().sprite);
+        //ui_script_obj.addSprite(2, playerBugs[1].GetComponent<SpriteRenderer>().sprite);
     }
 
     void Update()
     {
         swapCooldown -= Time.deltaTime;
-        Vector3 Velocity = new Vector3(move_vector.x, move_vector.y).normalized * playerBugs[index].speed;
+        Vector3 Velocity = new Vector3(move_vector.x, 0, move_vector.y).normalized * playerBugs[index].speed;
         //print(playerBugs[index].speed);
         rb.velocity = Velocity;
+
     }
     public void move(InputAction.CallbackContext context)
     {
@@ -102,5 +103,13 @@ public class Player : MonoBehaviour
             }
             playerBugs[index].gameObject.SetActive(true);
         }
+    }
+
+    IEnumerator getStartImages()
+    {
+        yield return null;
+        ui_script_obj.addSprite(0, playerBugs[2].GetComponent<SpriteRenderer>().sprite);
+        ui_script_obj.addSprite(1, playerBugs[0].GetComponent<SpriteRenderer>().sprite);
+        ui_script_obj.addSprite(2, playerBugs[1].GetComponent<SpriteRenderer>().sprite);
     }
 }
