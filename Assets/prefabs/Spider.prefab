@@ -99,7 +99,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBugs: []
+  index: 0
   speed: 1
+  hp: 1
+  atk: 1
+  projectile: {fileID: 4311058675480484690, guid: 89b14905232e9104ca3275902d315874, type: 3}
+  launchVelocity: 700
 --- !u!65 &5896893510625795137
 BoxCollider:
   m_ObjectHideFlags: 0

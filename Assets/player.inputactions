@@ -9,7 +9,7 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "563f6d7e-2a75-4ead-a19e-42871c090a06",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -31,6 +31,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "176c7b79-5af7-41cb-9159-cebd7d856add",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Zoom",
+                    "type": "Value",
+                    "id": "4c273c67-cf68-4547-9b69-f0f79de1647c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -185,6 +203,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "SwapRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "37925b01-4c5a-4ee8-b55d-ea23723da2b4",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "db1419a5-4a47-4628-a22f-3ecb5dd4350d",
+                    "path": "<Pointer>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse;Touch",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29cda337-8080-41b4-a68b-3361a90e8bc1",
+                    "path": "<Joystick>/{Hatswitch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "deec5625-2eb6-4c1c-86a7-8c5f17d4dd16",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
