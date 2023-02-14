@@ -58,7 +58,7 @@ public class change_scene : MonoBehaviour
         TMP_Dropdown dropOptC = dropobjC.GetComponent<TMP_Dropdown>();
         values.Add(dropOptC.value);
         DontDestroyOnLoad(this.gameObject);
-        SceneManager.LoadScene("NavTestNavmesh");
+        SceneManager.LoadScene("Arena");
         // var op = SceneManager.LoadSceneAsync("NavTestNavmesh");
         //need coroutine
         yield return null;
