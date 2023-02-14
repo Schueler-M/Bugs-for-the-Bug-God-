@@ -505,9 +505,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Item 3
-
-'
+  m_text: Swatchet
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2840,7 +2838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &757832814
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3773,6 +3771,9 @@ MonoBehaviour:
   hubUI: {fileID: 1771002856}
   shopUI: {fileID: 757832813}
   camera: {fileID: 963194227}
+  sword: {fileID: 2800000, guid: f6024f5f6ff96094bbf0afa47bb82e21, type: 3}
+  hatchet: {fileID: 2800000, guid: cb718c358f6eb624c90a290e69d3bab7, type: 3}
+  swatchet: {fileID: 2800000, guid: dc0e906a09ddda242bb527df76906351, type: 3}
 --- !u!4 &966092302 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8578869230586474647, guid: eae42a57b046b1a42a79ae6319bccca3, type: 3}
@@ -5130,7 +5131,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Item 1
+  m_text: Sword
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7961,7 +7962,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Item 2
+  m_text: Hatchet
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

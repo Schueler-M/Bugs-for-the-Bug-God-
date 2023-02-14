@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class camScript : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class camScript : MonoBehaviour
     }
     visibleOpt curr;
     ArrayList inv = new ArrayList();
+    public Texture sword;
+    public Texture hatchet;
+    public Texture swatchet;
     void Start()
     {
         curr = visibleOpt.hub;
@@ -53,23 +57,50 @@ public class camScript : MonoBehaviour
         }
         else if(curr == visibleOpt.blacksmith)
         {
-            
+            int count = 1;
+            foreach (var item in inv)
+            {
+                string objName = "Main Camera/Canvas/ShopUI/Inventory/InvSlot (" + count + ")";
+                GameObject obj = GameObject.Find(objName);
+                RawImage m_RawImage = obj.GetComponent<RawImage>();
+                if(item.ToString() == "sword")
+                {
+                    m_RawImage.texture = sword;
+                }
+                else if(item.ToString() == "hatchet")
+                {
+                    m_RawImage.texture = hatchet;
+                }
+                else if(item.ToString() == "swatchet")
+                {
+                    m_RawImage.texture = swatchet;
+                }
+                count += 1;
+            }
         }
     }
 
     public void purchaseItem1()
     {
-        inv.Add("Item1");
+        if(curr == visibleOpt.blacksmith && inv.Count <= 9)
+        {
+            inv.Add("sword");
+        }
     }
 
     public void purchaseItem2()
     {
-        inv.Add("Item2");
+        if (curr == visibleOpt.blacksmith && inv.Count <= 9)
+        {
+            inv.Add("hatchet");
+        }
     }
 
     public void purchaseItem3()
     {
-        inv.Add("Item3");
+        if (curr == visibleOpt.blacksmith && inv.Count <= 9)
+        {
+            inv.Add("swatchet");
+        }
     }
-
 }
