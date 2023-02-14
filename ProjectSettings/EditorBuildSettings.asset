@@ -4,5 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/FightMenu.unity
+    guid: 30a55d0b0cfe8a141a9005c52de0428e
+  - enabled: 1
+    path: Assets/Scenes/NavTestNavmesh.unity
+    guid: b840ae4290950ad41a92255ecd6fb10a
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 7bcab2efa62a57144a08f8e64dc9dda4, type: 2}
