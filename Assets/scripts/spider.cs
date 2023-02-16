@@ -35,6 +35,7 @@ public class spider : Player
 
     private IEnumerator Reload(float f)
     {
+        shot_taken = false;
         yield return new WaitForSeconds(f);
     }
 }
