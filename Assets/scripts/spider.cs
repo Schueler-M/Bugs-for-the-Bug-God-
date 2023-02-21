@@ -7,14 +7,17 @@ public class spider : Player
 {
     // Start is called before the first frame update
     float curhp = 80;
+    HealthBarScript hpBar;
     public GameObject projectile;
     public float launchVelocity = 700f;
     private bool shot_taken = false;
     void Start()
     {
+        hpBar = transform.Find("HealthBar Canvas").GetComponent<HealthBarScript>();
         speed = 5;
         hp = curhp;
         atk = 80;
+        def = 50;
     }
 
     // Update is called once per frame
@@ -22,6 +25,7 @@ public class spider : Player
     {
         //print("cur" + curhp.ToString());
         //print("hp" + hp.ToString());
+        hpBar.UpdateHealth(curhp, hp);
         if (Input.GetButtonDown("Fire3") && shot_taken == false)
         {
             shot_taken = true;

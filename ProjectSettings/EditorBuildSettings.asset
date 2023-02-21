@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Alvaro/Scenes/FightMenu.unity
+    path: Assets/Scenes/FightMenu.unity
     guid: 30a55d0b0cfe8a141a9005c52de0428e
   - enabled: 1
-    path: Assets/Alvaro/Scenes/NavTestNavmesh.unity
+    path: Assets/Scenes/NavTestNavmesh.unity
     guid: b840ae4290950ad41a92255ecd6fb10a
   - enabled: 1
-    path: Assets/Alvaro/Scenes/Arena/Arena.unity
+    path: Assets/Scenes/Arena/Arena.unity
     guid: c022033d095578f42819249422538f5c
   - enabled: 1
-    path: Assets/Alvaro/Scenes/Town/Town.unity
+    path: Assets/Scenes/Town/Town.unity
     guid: bf724831f6b46ca4392a1ad93bdc371b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 7bcab2efa62a57144a08f8e64dc9dda4, type: 2}

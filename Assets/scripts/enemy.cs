@@ -49,6 +49,7 @@ public class enemy : MonoBehaviour
         {
             
             ps.playerBugs[ps.index].hp -= 5 * Time.deltaTime;
+            //ps.playerBugs[ps.index].updateHpBar();
             if (index != atkIndex)
             {
                 enemyBugs[index].gameObject.SetActive(false);

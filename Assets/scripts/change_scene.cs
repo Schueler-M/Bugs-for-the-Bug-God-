@@ -11,7 +11,7 @@ public class change_scene : MonoBehaviour
     // Start is called before the first frame update
     public GameObject ant_prefab;
     public GameObject spider_prefab;
-    public GameObject worm_prefab;
+    public GameObject beetle_prefab;
     void Start()
     {
 
@@ -80,7 +80,7 @@ public class change_scene : MonoBehaviour
             }
             else
             {
-                new_inst = GameObject.Instantiate(worm_prefab, player.transform);
+                new_inst = GameObject.Instantiate(beetle_prefab, player.transform);
             }
             ps.playerBugs[i] = new_inst.GetComponent<Player>();
         }

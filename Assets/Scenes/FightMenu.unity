@@ -341,7 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ant_prefab: {fileID: 383981328592123655, guid: 1efad4d13a53b6146869932fc049035d, type: 3}
   spider_prefab: {fileID: 5896893510625795165, guid: 9dab562b468090c439150c3f03eba66a, type: 3}
-  worm_prefab: {fileID: 9087973629820883099, guid: 4e4224b8c69430a4c82a74c396d6a478, type: 3}
+  beetle_prefab: {fileID: 7058881335459126599, guid: 1f2324b914f37c24abadacc9ad464203, type: 3}
 --- !u!1 &73743992
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +584,7 @@ MonoBehaviour:
       m_Image: {fileID: 21300000, guid: 7bc71a759f67ffe46ad508eebe1ccdf4, type: 3}
     - m_Text: Spider
       m_Image: {fileID: 21300000, guid: 7f7f6b19d2fef714099e37a1b64b4c21, type: 3}
-    - m_Text: Worm
+    - m_Text: Beetle
       m_Image: {fileID: 21300000, guid: 9365860c9a584ef42829f688296c60c9, type: 3}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1263,7 +1263,7 @@ MonoBehaviour:
       m_Image: {fileID: 21300000, guid: 7bc71a759f67ffe46ad508eebe1ccdf4, type: 3}
     - m_Text: Spider
       m_Image: {fileID: 21300000, guid: 7f7f6b19d2fef714099e37a1b64b4c21, type: 3}
-    - m_Text: Worm
+    - m_Text: Beetle
       m_Image: {fileID: 21300000, guid: 9365860c9a584ef42829f688296c60c9, type: 3}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3743,7 +3743,7 @@ MonoBehaviour:
       m_Image: {fileID: 21300000, guid: 7bc71a759f67ffe46ad508eebe1ccdf4, type: 3}
     - m_Text: Spider
       m_Image: {fileID: 21300000, guid: 7f7f6b19d2fef714099e37a1b64b4c21, type: 3}
-    - m_Text: Worm
+    - m_Text: Beetle
       m_Image: {fileID: 21300000, guid: 9365860c9a584ef42829f688296c60c9, type: 3}
   m_OnValueChanged:
     m_PersistentCalls:

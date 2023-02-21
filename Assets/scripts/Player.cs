@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public int speed = 1;
     public float hp = 1.0f;
     public int atk = 1;
+    public int def = 1;
 
     Vector2 move_vector;
     Rigidbody rb;
