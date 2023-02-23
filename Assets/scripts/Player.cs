@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float hp = 1.0f;
     public int atk = 1;
     public int def = 1;
+    public float damageHeal = 0;
 
     Vector2 move_vector;
     Rigidbody rb;
@@ -21,6 +22,8 @@ public class Player : MonoBehaviour
     bool aim_needs_adjusted;
     Ray aim_ray;
     Camera my_camera;
+    GameObject doHit;
+    bool isAttacking = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -48,14 +51,9 @@ public class Player : MonoBehaviour
             RaycastHit hit_result;
             if (Physics.Raycast(aim_ray, out hit_result, Mathf.Infinity, LayerMask.GetMask("Ground")))
             {
-                print("raycast hit: " + hit_result.point);
-                print(1 << 8);
                 Vector3 look_at_pt = new Vector3(hit_result.point.x, transform.position.y, hit_result.point.z);
                 look_at_pt -= transform.position;
                 playerBugs[index].transform.rotation = Quaternion.LookRotation(look_at_pt);
-            }
-            else { 
-                print("hit fail");
             }
         }
 
@@ -69,12 +67,10 @@ public class Player : MonoBehaviour
         float value = context.ReadValue<Vector2>().y;
         if(value > 0)
         {
-            print(context.ReadValue<Vector2>());
             my_camera.transform.Translate(my_camera.transform.TransformDirection(transform.forward) * Time.deltaTime * value, Space.World);
         }
         else if (value < 0)
         {
-            print("BACKSCROLL");
             my_camera.transform.Translate((-1 * my_camera.transform.forward) * Time.deltaTime * (-1*value), Space.World);
         }
     }
@@ -93,6 +89,10 @@ public class Player : MonoBehaviour
             aim_ray = my_camera.ScreenPointToRay(mouse_pos);
         }
 
+    }
+    public void AttackWrapper(InputAction.CallbackContext context)
+    {
+        StartCoroutine(attack(0.5f));
     }
 
     public void SwapLeft(InputAction.CallbackContext context)
@@ -169,5 +169,17 @@ public class Player : MonoBehaviour
         ui_script_obj.addSprite(0, playerBugs[2].GetComponent<SpriteRenderer>().sprite);
         ui_script_obj.addSprite(1, playerBugs[0].GetComponent<SpriteRenderer>().sprite);
         ui_script_obj.addSprite(2, playerBugs[1].GetComponent<SpriteRenderer>().sprite);
+    }
+    private IEnumerator attack(float f)
+    {
+        if (isAttacking == false)
+        {
+            doHit = playerBugs[index].transform.Find("HitBox").gameObject;
+            isAttacking = true;
+            doHit.SetActive(true);
+            yield return new WaitForSeconds(f);
+            isAttacking = false;
+            doHit.SetActive(false);
+        }
     }
 }
