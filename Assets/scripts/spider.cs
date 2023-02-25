@@ -6,7 +6,7 @@ using UnityEngine;
 public class spider : Player
 {
     // Start is called before the first frame update
-    float curhp = 80;
+    float curhp = 800;
     HealthBarScript hpBar;
     public GameObject projectile;
     public float launchVelocity = 700f;

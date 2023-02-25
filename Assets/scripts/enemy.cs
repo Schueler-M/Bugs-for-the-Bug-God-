@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 public class enemy : MonoBehaviour
 {
     public GameObject player;
     Player ps;
-    int index = 0;
+    public int index = 0;
     int speedIndex;
     int atkIndex;
     int defIndex;
@@ -17,6 +18,9 @@ public class enemy : MonoBehaviour
     public Player[] enemyBugs;
     NavMeshAgent agent;
     bool needDefHeal;
+    GameObject doHit;
+    bool isAttacking = false;
+    ParticleSystem partSys;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +30,7 @@ public class enemy : MonoBehaviour
         findBest();
         enemyBugs[1].gameObject.SetActive(false);
         enemyBugs[2].gameObject.SetActive(false);
+        partSys = transform.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -36,7 +41,6 @@ public class enemy : MonoBehaviour
         hitCooldown -= Time.deltaTime;
         if (Mathf.Abs(agent.remainingDistance) < 5)
         {
-            ps.playerBugs[ps.index].hp -= 5 * Time.deltaTime;
             //ps.playerBugs[ps.index].updateHpBar();
             //print("Need DEF Heal: "+needDefHeal.ToString());
             if(needDefHeal == true && index != defIndex)
@@ -47,11 +51,11 @@ public class enemy : MonoBehaviour
             }
             else if (index != atkIndex && needDefHeal == false)
             {
-                print(needDefHeal);
                 enemyBugs[index].gameObject.SetActive(false);
                 index = atkIndex;
                 enemyBugs[index].gameObject.SetActive(true);
             }
+            AttackWrapper();
         }
         else
         {
@@ -70,17 +74,19 @@ public class enemy : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (hitCooldown <= 0)
-        {
-            hitCooldown = 0.5f;
-            int dmg = (ps.playerBugs[ps.index].atk * 2) - enemyBugs[index].def;
-            enemyBugs[index].hp -= dmg;
-            enemyBugs[index].damageHeal = dmg / 3;
-            if (enemyBugs[index].hp < 0)
+        if(other.tag == "Player")
+            if (hitCooldown <= 0)
             {
-                findBest();
+                hitCooldown = 0.5f;
+                int dmg = (ps.playerBugs[ps.index].atk * 2) - enemyBugs[index].def;
+                enemyBugs[index].hp -= dmg;
+                enemyBugs[index].damageHeal = dmg / 3;
+                if (enemyBugs[index].hp < 0)
+                {
+                    partSys.Play();
+                    findBest();
+                }
             }
-        }
     }
 
     void findBest()
@@ -88,6 +94,7 @@ public class enemy : MonoBehaviour
         int fastestSpeed = 0;
         int biggestAtk = 0;
         int biggestDef = 0;
+        int deadCount = 0;
         for (int i = 0; i < enemyBugs.Length; i++)
         {
             if (enemyBugs[i].hp > 0)
@@ -111,31 +118,50 @@ public class enemy : MonoBehaviour
                     defIndex = i;
                 }
             }
+            else
+                deadCount++;
             //print("speedIndex: " + speedIndex.ToString() + " atkIndex: " + atkIndex.ToString() + " defIndex: " + defIndex.ToString());
         }
+        if(deadCount >= 3)
+            Destroy(gameObject);
     }
     void healHurt()
     {
         float totalHeal = 0;
         for (int i = 0; i < enemyBugs.Length; i++)
         {
-            totalHeal += enemyBugs[i].damageHeal; //used for ai, not heal includes active
+            totalHeal += enemyBugs[i].damageHeal; //used for ai, not healing and includes active bug
             if (enemyBugs[i].hp > 0 & (enemyBugs[i].isActiveAndEnabled == false))
             {
-                float heal = enemyBugs[i].damageHeal * (Time.deltaTime / 30);
+                float heal = enemyBugs[i].damageHeal * (Time.deltaTime / 300);
                 enemyBugs[i].hp += heal;
                 enemyBugs[i].damageHeal -= heal;
                 if (enemyBugs[i].damageHeal < 0)
                     enemyBugs[i].damageHeal = 0;
 
             }
+
         }
         if(totalHeal < 10)
             needDefHeal = false;
         else
-        {
             needDefHeal = true;
-        } 
         //print("totalHeal: " + totalHeal.ToString());
+    }
+    private IEnumerator attack(float f)
+    {
+        if (isAttacking == false)
+        {
+            doHit = enemyBugs[index].transform.Find("HitBox").gameObject;
+            isAttacking = true;
+            doHit.SetActive(true);
+            yield return new WaitForSeconds(f);
+            isAttacking = false;
+            doHit.SetActive(false);
+        }
+    }
+    public void AttackWrapper()
+    {
+        StartCoroutine(attack(0.5f));
     }
 }

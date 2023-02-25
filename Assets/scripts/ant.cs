@@ -6,7 +6,7 @@ public class ant : Player
 {
     HealthBarScript hpBar;
     // Start is called before the first frame update
-    float curhp = 70;
+    float curhp = 500;
     int damageHeal = 0;
     void Start()
     {

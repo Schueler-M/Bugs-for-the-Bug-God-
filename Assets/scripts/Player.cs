@@ -24,6 +24,9 @@ public class Player : MonoBehaviour
     Camera my_camera;
     GameObject doHit;
     bool isAttacking = false;
+    float hitCooldown = 0.0f;
+    enemy es;
+    ParticleSystem partSys;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -31,6 +34,8 @@ public class Player : MonoBehaviour
         ui_script_obj = ui_game_obj.GetComponent<MidGameUI>();
         my_camera = transform.Find("Main Camera").GetComponent<Camera>();
         StartCoroutine(getStartImages());
+        es = GameObject.Find("Enemy").GetComponent<enemy>();
+        partSys = transform.GetComponent<ParticleSystem>();
         //ui_script_obj.addSprite(0, playerBugs[2].GetComponent<SpriteRenderer>().sprite);
         //ui_script_obj.addSprite(1, playerBugs[0].GetComponent<SpriteRenderer>().sprite);
         //ui_script_obj.addSprite(2, playerBugs[1].GetComponent<SpriteRenderer>().sprite);
@@ -39,6 +44,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         swapCooldown -= Time.deltaTime;
+        hitCooldown -= Time.deltaTime;
         Vector3 Velocity = new Vector3(move_vector.x, 0, move_vector.y).normalized * playerBugs[index].speed;
         //playerBugs[index].hp = hp;
         //print(playerBugs[index].speed);
@@ -56,6 +62,7 @@ public class Player : MonoBehaviour
                 playerBugs[index].transform.rotation = Quaternion.LookRotation(look_at_pt);
             }
         }
+        healHurt();
 
     }
     public void move(InputAction.CallbackContext context)
@@ -105,24 +112,14 @@ public class Player : MonoBehaviour
             index -= 1;
             if (index < 0)
             {
-                index = 2;
+                if(playerBugs[2].hp > 0)
+                    index = 2;
+                else index += 1;
             }
-            ui_script_obj.addSprite(1, playerBugs[index].GetComponent<SpriteRenderer>().sprite);
-            if (index <= 0)
-            {
-                ui_script_obj.addSprite(0, playerBugs[2].GetComponent<SpriteRenderer>().sprite);
-                ui_script_obj.addSprite(2, playerBugs[1].GetComponent<SpriteRenderer>().sprite);
-            }
-            else if (index >= 2)
-            {
-                ui_script_obj.addSprite(0, playerBugs[1].GetComponent<SpriteRenderer>().sprite);
-                ui_script_obj.addSprite(2, playerBugs[0].GetComponent<SpriteRenderer>().sprite);
-            }
-            else
-            {
-                ui_script_obj.addSprite(0, playerBugs[0].GetComponent<SpriteRenderer>().sprite);
-                ui_script_obj.addSprite(2, playerBugs[2].GetComponent<SpriteRenderer>().sprite);
-            }
+            else if (playerBugs[index].hp < 0)
+                index += 1;
+
+            getIcons();
             playerBugs[index].gameObject.SetActive(true);
 
         }
@@ -137,28 +134,14 @@ public class Player : MonoBehaviour
             index += 1;
             if (index > 2)
             {
-                index = 0;
+                if(playerBugs[0].hp > 0)
+                    index = 0;
+                else index -= 1;
             }
-            if (index < 0)
-            {
-                index = 2;
-            }
-            ui_script_obj.addSprite(1, playerBugs[index].GetComponent<SpriteRenderer>().sprite);
-            if (index <= 0)
-            {
-                ui_script_obj.addSprite(0, playerBugs[2].GetComponent<SpriteRenderer>().sprite);
-                ui_script_obj.addSprite(2, playerBugs[1].GetComponent<SpriteRenderer>().sprite);
-            }
-            else if (index >= 2)
-            {
-                ui_script_obj.addSprite(0, playerBugs[1].GetComponent<SpriteRenderer>().sprite);
-                ui_script_obj.addSprite(2, playerBugs[0].GetComponent<SpriteRenderer>().sprite);
-            }
-            else
-            {
-                ui_script_obj.addSprite(0, playerBugs[0].GetComponent<SpriteRenderer>().sprite);
-                ui_script_obj.addSprite(2, playerBugs[2].GetComponent<SpriteRenderer>().sprite);
-            }
+            else if(playerBugs[index].hp < 0)
+                index -=1;
+
+            getIcons();
             playerBugs[index].gameObject.SetActive(true);
         }
     }
@@ -181,5 +164,79 @@ public class Player : MonoBehaviour
             isAttacking = false;
             doHit.SetActive(false);
         }
+    }
+    void healHurt()
+    {
+        for (int i = 0; i < playerBugs.Length; i++)
+        {
+            if (playerBugs[i].hp > 0 & (playerBugs[i].isActiveAndEnabled == false))
+            {
+                float heal = playerBugs[i].damageHeal * (Time.deltaTime / 30);
+                playerBugs[i].hp += heal;
+                playerBugs[i].damageHeal -= heal;
+                if (playerBugs[i].damageHeal < 0)
+                    playerBugs[i].damageHeal = 0;
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            if (hitCooldown <= 0)
+            {
+                hitCooldown = 0.5f;
+                int dmg = (es.enemyBugs[es.index].atk * 2) - playerBugs[index].def;
+                playerBugs[index].hp -= dmg;
+                playerBugs[index].damageHeal = dmg / 3;
+                if (playerBugs[index].hp < 0)
+                {
+                    partSys.Play();
+                    playerBugs[index].gameObject.SetActive(false);
+                    for (int i = 0; i < playerBugs.Length; i++)
+                    {
+                        if (playerBugs[i].hp > 0)
+                        {
+                            index = i;
+                            //Display Particles
+                            break;
+                        }
+                        if (i == 2)
+                        {
+                            //GAMEOVER
+                            Destroy(gameObject);
+                        }
+                    }
+                    getIcons();
+                    playerBugs[index].gameObject.SetActive(true);
+                }
+            }
+        }
+    }
+    void getIcons()
+    {
+        ui_script_obj.addSprite(1, playerBugs[index].GetComponent<SpriteRenderer>().sprite);
+        if (index <= 0)
+        {
+            ui_script_obj.addSprite(0, playerBugs[2].GetComponent<SpriteRenderer>().sprite, isAlive(2));
+            ui_script_obj.addSprite(2, playerBugs[1].GetComponent<SpriteRenderer>().sprite, isAlive(1));
+        }
+        else if (index >= 2)
+        {
+            ui_script_obj.addSprite(0, playerBugs[1].GetComponent<SpriteRenderer>().sprite, isAlive(1));
+            ui_script_obj.addSprite(2, playerBugs[0].GetComponent<SpriteRenderer>().sprite, isAlive(0));
+        }
+        else
+        {
+            ui_script_obj.addSprite(0, playerBugs[0].GetComponent<SpriteRenderer>().sprite, isAlive(0));
+            ui_script_obj.addSprite(2, playerBugs[2].GetComponent<SpriteRenderer>().sprite, isAlive(2));
+        }
+    }
+    bool isAlive(int i)
+    {
+        if (playerBugs[i].hp >= 0)
+            return true;
+        return false;
     }
 }
