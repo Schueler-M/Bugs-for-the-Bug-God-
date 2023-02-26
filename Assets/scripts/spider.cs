@@ -14,7 +14,7 @@ public class spider : Player
     void Start()
     {
         hpBar = transform.Find("HealthBar Canvas").GetComponent<HealthBarScript>();
-        speed = 5;
+        speed = 50;
         hp = curhp;
         atk = 80;
         def = 50;
