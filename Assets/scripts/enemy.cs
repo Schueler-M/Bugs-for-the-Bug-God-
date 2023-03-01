@@ -21,6 +21,9 @@ public class enemy : MonoBehaviour
     GameObject doHit;
     bool isAttacking = false;
     ParticleSystem partSys;
+
+    Vector3 test_position;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,14 +34,27 @@ public class enemy : MonoBehaviour
         enemyBugs[1].gameObject.SetActive(false);
         enemyBugs[2].gameObject.SetActive(false);
         partSys = transform.GetComponent<ParticleSystem>();
+
+        test_position = new Vector3(43, 8, -12); // temporary
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.destination = player.transform.position;
+        // If player is a close distance it will move towards the player
+        // If player is not close it will move to the temporary point in the arena (until I change the code)
+        if (Vector3.Distance(player.transform.position, transform.position) <= 20)
+        {
+            agent.SetDestination(player.transform.position); 
+        }
+        else
+        {
+            agent.SetDestination(test_position); // I have it move to a temporary point in the arena for now
+        }
+        
         agent.speed = enemyBugs[index].speed;
         hitCooldown -= Time.deltaTime;
+
         if (Mathf.Abs(agent.remainingDistance) < 5)
         {
             //ps.playerBugs[ps.index].updateHpBar();
@@ -72,6 +88,7 @@ public class enemy : MonoBehaviour
 
         //Transform.RotateAround(transform.position,Vector3.up,90)
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")

@@ -199,7 +199,7 @@
                     "path": "<Keyboard>/#(Q)",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "SwapLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -210,7 +210,7 @@
                     "path": "<Keyboard>/#(E)",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "SwapRight",
                     "isComposite": false,
                     "isPartOfComposite": false
