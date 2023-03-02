@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class enemy : MonoBehaviour
 {
@@ -22,7 +23,9 @@ public class enemy : MonoBehaviour
     bool isAttacking = false;
     ParticleSystem partSys;
 
-    Vector3 test_position;
+    public Vector3 walk_to;
+    public float walk_range;
+    private bool player_dest; // player is the destination or not
 
     // Start is called before the first frame update
     void Start()
@@ -35,21 +38,24 @@ public class enemy : MonoBehaviour
         enemyBugs[2].gameObject.SetActive(false);
         partSys = transform.GetComponent<ParticleSystem>();
 
-        test_position = new Vector3(43, 8, -12); // temporary
+        walk_range = 50;
     }
 
     // Update is called once per frame
     void Update()
     {
+        searchPoint();
         // If player is a close distance it will move towards the player
-        // If player is not close it will move to the temporary point in the arena (until I change the code)
+        // If player is not close it will move at random
         if (Vector3.Distance(player.transform.position, transform.position) <= 20)
         {
+            player_dest = true;
             agent.SetDestination(player.transform.position); 
         }
         else
         {
-            agent.SetDestination(test_position); // I have it move to a temporary point in the arena for now
+            player_dest = false;
+            agent.SetDestination(walk_to);
         }
         
         agent.speed = enemyBugs[index].speed;
@@ -57,21 +63,24 @@ public class enemy : MonoBehaviour
 
         if (Mathf.Abs(agent.remainingDistance) < 5)
         {
-            //ps.playerBugs[ps.index].updateHpBar();
-            //print("Need DEF Heal: "+needDefHeal.ToString());
-            if(needDefHeal == true && index != defIndex)
+            if (player_dest)
             {
-                enemyBugs[index].gameObject.SetActive(false);
-                index = defIndex;
-                enemyBugs[index].gameObject.SetActive(true);
+                //ps.playerBugs[ps.index].updateHpBar();
+                //print("Need DEF Heal: "+needDefHeal.ToString());
+                if (needDefHeal == true && index != defIndex)
+                {
+                    enemyBugs[index].gameObject.SetActive(false);
+                    index = defIndex;
+                    enemyBugs[index].gameObject.SetActive(true);
+                }
+                else if (index != atkIndex && needDefHeal == false)
+                {
+                    enemyBugs[index].gameObject.SetActive(false);
+                    index = atkIndex;
+                    enemyBugs[index].gameObject.SetActive(true);
+                }
+                AttackWrapper();
             }
-            else if (index != atkIndex && needDefHeal == false)
-            {
-                enemyBugs[index].gameObject.SetActive(false);
-                index = atkIndex;
-                enemyBugs[index].gameObject.SetActive(true);
-            }
-            AttackWrapper();
         }
         else
         {
@@ -87,6 +96,13 @@ public class enemy : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
 
         //Transform.RotateAround(transform.position,Vector3.up,90)
+    }
+
+    private void searchPoint()
+    {
+        float rand_x = Random.Range(-walk_range,walk_range);
+        float rand_z = Random.Range(-walk_range,walk_range);
+        walk_to = new Vector3(transform.position.x + rand_x, transform.position.y, transform.position.z + rand_z); // sets a random point for enemy to walk to
     }
 
     private void OnTriggerEnter(Collider other)
