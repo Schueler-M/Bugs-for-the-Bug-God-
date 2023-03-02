@@ -26,6 +26,7 @@ public class enemy : MonoBehaviour
     public Vector3 walk_to;
     public float walk_range;
     private bool player_dest; // player is the destination or not
+    private int search_timer;
 
     // Start is called before the first frame update
     void Start()
@@ -39,12 +40,14 @@ public class enemy : MonoBehaviour
         partSys = transform.GetComponent<ParticleSystem>();
 
         walk_range = 50;
+        searchPoint();
+        search_timer = 400;
     }
 
     // Update is called once per frame
     void Update()
     {
-        searchPoint();
+        
         // If player is a close distance it will move towards the player
         // If player is not close it will move at random
         if (Vector3.Distance(player.transform.position, transform.position) <= 20)
@@ -54,6 +57,12 @@ public class enemy : MonoBehaviour
         }
         else
         {
+            search_timer -= 1;
+            if (search_timer <= 0)
+            {
+                search_timer = 400;
+                searchPoint(); // sets a new point after timer is up
+            }
             player_dest = false;
             agent.SetDestination(walk_to);
         }
@@ -80,6 +89,10 @@ public class enemy : MonoBehaviour
                     enemyBugs[index].gameObject.SetActive(true);
                 }
                 AttackWrapper();
+            }
+            else
+            {
+                searchPoint(); // sets a new point when it reaches its destination
             }
         }
         else

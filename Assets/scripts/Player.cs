@@ -27,6 +27,12 @@ public class Player : MonoBehaviour
     float hitCooldown = 0.0f;
     enemy es;
     ParticleSystem partSys;
+
+    public bool right_camrot = false;
+    public bool left_camrot = false;
+    public bool mbpr = false;
+    public bool mbpl = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -43,9 +49,14 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        mbpl = false;
+        mbpr = false;
+
         swapCooldown -= Time.deltaTime;
         hitCooldown -= Time.deltaTime;
-        Vector3 Velocity = new Vector3(move_vector.x, 0, move_vector.y).normalized * playerBugs[index].speed;
+        Vector3 getx = transform.forward.normalized * move_vector.y;
+        Vector3 gety = transform.right.normalized * move_vector.x;
+        Vector3 Velocity =  (getx + gety) * playerBugs[index].speed;
         //playerBugs[index].hp = hp;
         //print(playerBugs[index].speed);
         rb.velocity = Velocity;
@@ -63,7 +74,18 @@ public class Player : MonoBehaviour
             }
         }
         healHurt();
+        if (right_camrot)
+        {
+            Vector3 rright = new Vector3(0, 1, 0);
+            transform.Rotate(rright);
+        }
 
+        if (left_camrot)
+        {
+            Vector3 rleft = new Vector3(0, -1, 0);
+            transform.Rotate(rleft);
+        }
+        
     }
     public void move(InputAction.CallbackContext context)
     {
@@ -97,6 +119,25 @@ public class Player : MonoBehaviour
         }
 
     }
+
+    public void RotateCameraRight(InputAction.CallbackContext context)
+    {
+        if (mbpr == false)
+        {
+            right_camrot = !right_camrot;
+            mbpr = true;
+        }
+    }
+
+    public void RotateCameraLeft(InputAction.CallbackContext context)
+    {
+        if (mbpl == false)
+        {
+            left_camrot = !left_camrot;
+            mbpl = true;
+        }
+    }
+
     public void AttackWrapper(InputAction.CallbackContext context)
     {
         StartCoroutine(attack(0.5f));
