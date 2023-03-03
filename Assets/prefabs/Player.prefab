@@ -140,6 +140,12 @@ MonoBehaviour:
   hp: 1
   atk: 1
   def: 1
+  damageHeal: 0
+  zoom_out: {fileID: 0}
+  right_camrot: 0
+  left_camrot: 0
+  mbpr: 0
+  mbpl: 0
 --- !u!114 &2815985401844441174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +331,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b0bf2137-ad1a-4e51-92a2-e21f9b57e95b
     m_ActionName: Player/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2815985401844441175}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: RotateCameraRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 55f0d91e-f18e-407d-a1f4-020abace1604
+    m_ActionName: Player/RotateCamRight[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2815985401844441175}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: RotateCameraLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4252f979-5827-42e9-93bb-52d4dd846ead
+    m_ActionName: Player/RotateCamLeft[/Keyboard/z]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player

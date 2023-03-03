@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
         float value = context.ReadValue<Vector2>().y;
         if(value > 0)
         {
-            my_camera.transform.Translate(my_camera.transform.TransformDirection(transform.forward) * Time.deltaTime * value, Space.World);
+            my_camera.transform.position = Vector3.MoveTowards(my_camera.transform.position, transform.position, (.005f * value));
         }
         else if (value < 0)
         {
