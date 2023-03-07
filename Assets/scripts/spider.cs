@@ -11,10 +11,11 @@ public class spider : Player
     public GameObject projectile;
     public float launchVelocity = 700f;
     private bool shot_taken = false;
+    int damageHeal = 0;
     void Start()
     {
         hpBar = transform.Find("HealthBar Canvas").GetComponent<HealthBarScript>();
-        speed = 50;
+        speed = 8;
         hp = curhp;
         atk = 80;
         def = 50;

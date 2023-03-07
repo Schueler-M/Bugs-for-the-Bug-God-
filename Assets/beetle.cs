@@ -10,7 +10,7 @@ public class beetle : Player
     void Start()
     {
         hpBar = transform.Find("HealthBar Canvas").GetComponent<HealthBarScript>();
-        speed = 10;
+        speed = 5;
         hp = curhp;
         atk = 50;
         def = 80;
