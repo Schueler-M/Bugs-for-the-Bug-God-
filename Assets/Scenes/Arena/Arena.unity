@@ -1374,15 +1374,15 @@ PrefabInstance:
     - target: {fileID: 2815985401844441175, guid: de889a7fb8f7aa94c94be501856043e6, type: 3}
       propertyPath: playerBugs.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 599031051}
     - target: {fileID: 2815985401844441175, guid: de889a7fb8f7aa94c94be501856043e6, type: 3}
       propertyPath: playerBugs.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1439369714}
     - target: {fileID: 2815985401844441175, guid: de889a7fb8f7aa94c94be501856043e6, type: 3}
       propertyPath: playerBugs.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1405799659}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de889a7fb8f7aa94c94be501856043e6, type: 3}
 --- !u!1 &292836996 stripped
