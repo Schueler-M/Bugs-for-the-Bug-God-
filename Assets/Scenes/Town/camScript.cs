@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class camScript : MonoBehaviour
 {
     public GameObject hubUI, shopUI, altarUI, pubUI;
-    public Camera camera;
+    public Camera cameraC;
     public enum visibleOpt
     {
         hub,
@@ -33,7 +33,7 @@ public class camScript : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit hit;
-                Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+                Ray ray = cameraC.ScreenPointToRay(Input.mousePosition);
 
                 if (Physics.Raycast(ray, out hit))
                 {
