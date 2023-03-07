@@ -7,7 +7,6 @@ public class ant : Player
     HealthBarScript hpBar;
     // Start is called before the first frame update
     float curhp = 500;
-    int damageHeal = 0;
     void Start()
     {
         hpBar = transform.Find("HealthBar Canvas").GetComponent<HealthBarScript>();

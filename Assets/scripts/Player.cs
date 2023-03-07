@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public int atk = 1;
     public int def = 1;
     public float damageHeal = 0;
+    public string name;
 
     Vector2 move_vector;
     Rigidbody rb;

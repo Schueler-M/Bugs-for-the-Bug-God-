@@ -3536,7 +3536,6 @@ GameObject:
   - component: {fileID: 1827617935966049018}
   - component: {fileID: 7490421967399931450}
   - component: {fileID: 1805143394394545603}
-  - component: {fileID: 1878302101622344361}
   m_Layer: 0
   m_Name: Raised_Horn_6
   m_TagString: Untagged
@@ -3609,19 +3608,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1878302101622344361
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230205051437286041}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1230928968527814187
 GameObject:
   m_ObjectHideFlags: 0
@@ -3891,7 +3877,7 @@ GameObject:
   - component: {fileID: 20151900538566575}
   - component: {fileID: 5955875695423342058}
   - component: {fileID: 913126966196801814}
-  - component: {fileID: 2927208055347982555}
+  - component: {fileID: 5738229851936143802}
   m_Layer: 0
   m_Name: Raised_Horn_2
   m_TagString: Untagged
@@ -3964,8 +3950,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2927208055347982555
-SphereCollider:
+--- !u!136 &5738229851936143802
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3974,9 +3960,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.52933216
+  m_Height: 1.4617682
+  m_Direction: 1
+  m_Center: {x: -0.0000003001808, y: -0.11809556, z: 0.029330442}
 --- !u!1 &1328105975588164848
 GameObject:
   m_ObjectHideFlags: 0
@@ -8203,7 +8190,6 @@ GameObject:
   - component: {fileID: 8042399126475551060}
   - component: {fileID: 7369339531566023706}
   - component: {fileID: 9013622634875075296}
-  - component: {fileID: 8401014244427834157}
   m_Layer: 0
   m_Name: Raised_Horn_9
   m_TagString: Untagged
@@ -8276,19 +8262,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8401014244427834157
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2543643287527968960}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2549873324680722371
 GameObject:
   m_ObjectHideFlags: 0
@@ -8662,7 +8635,6 @@ GameObject:
   - component: {fileID: 7625241485595172113}
   - component: {fileID: 7605613532139786596}
   - component: {fileID: 7625913620481276022}
-  - component: {fileID: 4148179136903675669}
   m_Layer: 0
   m_Name: Raised_Horn_8
   m_TagString: Untagged
@@ -8735,19 +8707,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4148179136903675669
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2633129694710196865}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2647215545310176251
 GameObject:
   m_ObjectHideFlags: 0
@@ -14476,9 +14435,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 10.839187
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000049487284, y: 0, z: -0.00000013582095}
 --- !u!1 &4239600861381167058
 GameObject:
   m_ObjectHideFlags: 0
@@ -14753,7 +14712,7 @@ GameObject:
   - component: {fileID: 8471663492231310742}
   - component: {fileID: 8706036154316045150}
   - component: {fileID: 428000545790354959}
-  - component: {fileID: 7445943574874223684}
+  - component: {fileID: 559025077236668719}
   m_Layer: 0
   m_Name: Raised_Horn_7
   m_TagString: Untagged
@@ -14826,8 +14785,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &7445943574874223684
-SphereCollider:
+--- !u!136 &559025077236668719
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -14836,9 +14795,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.5486459
+  m_Height: 2.5049565
+  m_Direction: 1
+  m_Center: {x: -0.0000006267509, y: 0.31548488, z: 0.12660189}
 --- !u!1 &4440003094804342707
 GameObject:
   m_ObjectHideFlags: 0
@@ -18817,7 +18777,6 @@ GameObject:
   - component: {fileID: 3465813253085290362}
   - component: {fileID: 6104519932947318592}
   - component: {fileID: 6317097975922906147}
-  - component: {fileID: 3063234146196565742}
   m_Layer: 0
   m_Name: Raised_Horn_3
   m_TagString: Untagged
@@ -18890,19 +18849,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3063234146196565742
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5642066547931609183}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5663045427219137785
 GameObject:
   m_ObjectHideFlags: 0
@@ -18914,7 +18860,6 @@ GameObject:
   - component: {fileID: 5666854865094577114}
   - component: {fileID: 5523295738730192532}
   - component: {fileID: 1949330338362710013}
-  - component: {fileID: 1828009344913071313}
   m_Layer: 0
   m_Name: Raised_Horn_5
   m_TagString: Untagged
@@ -18987,19 +18932,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1828009344913071313
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5663045427219137785}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5678556599554134484
 GameObject:
   m_ObjectHideFlags: 0
@@ -24199,7 +24131,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9861c1e815a8be946b63e2d2022f4a84, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f12a6d438445ed42ac3eccdc200753d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -24229,6 +24161,11 @@ MonoBehaviour:
   atk: 1
   def: 1
   damageHeal: 0
+  name: 
+  right_camrot: 0
+  left_camrot: 0
+  mbpr: 0
+  mbpl: 0
 --- !u!1 &7074070442890955110
 GameObject:
   m_ObjectHideFlags: 0
@@ -25943,7 +25880,6 @@ GameObject:
   - component: {fileID: 6809832108796425433}
   - component: {fileID: 5262495899984832403}
   - component: {fileID: 5462460429471383949}
-  - component: {fileID: 3631031436302130490}
   m_Layer: 0
   m_Name: Raised_Horn_4
   m_TagString: Untagged
@@ -26016,19 +25952,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3631031436302130490
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7707470403046123087}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7707655184031034603
 GameObject:
   m_ObjectHideFlags: 0
@@ -27881,9 +27804,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 10.07697
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000057979634, y: 0.00000058425843, z: 2.611035e-14}
 --- !u!1 &8195735836118033221
 GameObject:
   m_ObjectHideFlags: 0

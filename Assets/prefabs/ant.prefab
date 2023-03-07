@@ -957,7 +957,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7bc71a759f67ffe46ad508eebe1ccdf4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc950f4c2d4c16a41b1bca8f4c510e3e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -987,6 +987,11 @@ MonoBehaviour:
   atk: 1
   def: 1
   damageHeal: 0
+  name: 
+  right_camrot: 0
+  left_camrot: 0
+  mbpr: 0
+  mbpl: 0
 --- !u!1 &398213120451793633
 GameObject:
   m_ObjectHideFlags: 0
