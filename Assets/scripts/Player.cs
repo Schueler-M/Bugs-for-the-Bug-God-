@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public int def = 1;
     public float damageHeal = 0;
     public string name;
+    public int price = 0;
 
     Vector2 move_vector;
     Rigidbody rb;

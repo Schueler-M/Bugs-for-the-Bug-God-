@@ -57,7 +57,33 @@ public class change_scene : MonoBehaviour
         GameObject dropobjC = GameObject.Find("DropdownC");
         TMP_Dropdown dropOptC = dropobjC.GetComponent<TMP_Dropdown>();
         values.Add(dropOptC.value);
+        int indexA = 0;
+        foreach (int i in values)
+        {
+            if (i != 0)
+            {
+                int indexB = 0;
+                foreach (int j in values)
+                {
+                    if (i == j && indexA != indexB)
+                    {
+                        print("You chose the same bug twice!");
+                        yield break;
+                    }
+                    indexB++;
+                }
+            }
+            if (i == 0 && indexA == 0)
+            {
+                print("You need a bug1!");
+                yield break;
+            }
+            indexA++;
+        }
+        GameObject BugGen = GameObject.Find("GenBugs");
+        BugGenerator BugGenScript = BugGen.GetComponent<BugGenerator>();
         DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(BugGen);
         SceneManager.LoadScene("Arena");
         // var op = SceneManager.LoadSceneAsync("NavTestNavmesh");
         //need coroutine
@@ -69,6 +95,7 @@ public class change_scene : MonoBehaviour
         List<Player> list = new List<Player>();
         for (int i = 0; i < values.Count; i++)
         {
+            /*
             GameObject new_inst;
             if (values[i] == 0)
             {
@@ -82,7 +109,11 @@ public class change_scene : MonoBehaviour
             {
                 new_inst = GameObject.Instantiate(beetle_prefab, player.transform);
             }
-            ps.playerBugs[i] = new_inst.GetComponent<Player>();
+            ps.playerBugs[i] = new_inst.GetComponent<Player>();*/
+            GameObject curBug = BugGenScript.bugList[values[i] - 1];
+            curBug.transform.position = player.transform.position;
+            curBug.transform.parent = player.transform;
+            ps.playerBugs[i] = curBug.GetComponent<Player>();
         }
         ps.playerBugs[0].gameObject.SetActive(true);
         ps.playerBugs[1].gameObject.SetActive(false);

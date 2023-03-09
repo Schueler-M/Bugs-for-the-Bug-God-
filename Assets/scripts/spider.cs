@@ -6,18 +6,22 @@ using UnityEngine;
 public class spider : Player
 {
     // Start is called before the first frame update
-    float curhp = 800;
+    public float curhp = 800;
     HealthBarScript hpBar;
     public GameObject projectile;
     public float launchVelocity = 700f;
     private bool shot_taken = false;
+    public int curSpeed = 10;
+    public int curAtk = 80;
+    public int curDef = 50;
+    public int startPrice = 600;
     void Start()
     {
         hpBar = transform.Find("HealthBar Canvas").GetComponent<HealthBarScript>();
-        speed = 8;
+        speed = curSpeed;
         hp = curhp;
-        atk = 80;
-        def = 50;
+        atk = curAtk;
+        def = curDef;
     }
 
     // Update is called once per frame

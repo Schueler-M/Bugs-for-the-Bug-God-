@@ -218,7 +218,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ant
+  m_text: None
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -580,12 +580,8 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Ant
-      m_Image: {fileID: 21300000, guid: 7bc71a759f67ffe46ad508eebe1ccdf4, type: 3}
-    - m_Text: Spider
-      m_Image: {fileID: 21300000, guid: 7f7f6b19d2fef714099e37a1b64b4c21, type: 3}
-    - m_Text: Beetle
-      m_Image: {fileID: 21300000, guid: 9365860c9a584ef42829f688296c60c9, type: 3}
+    - m_Text: None
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1259,12 +1255,8 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Ant
-      m_Image: {fileID: 21300000, guid: 7bc71a759f67ffe46ad508eebe1ccdf4, type: 3}
-    - m_Text: Spider
-      m_Image: {fileID: 21300000, guid: 7f7f6b19d2fef714099e37a1b64b4c21, type: 3}
-    - m_Text: Beetle
-      m_Image: {fileID: 21300000, guid: 9365860c9a584ef42829f688296c60c9, type: 3}
+    - m_Text: None
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1681,9 +1673,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 71005439}
-        m_TargetAssemblyTypeName: change_scene, Assembly-CSharp
-        m_MethodName: wrapper
+      - m_Target: {fileID: 1537632859}
+        m_TargetAssemblyTypeName: BugGenerator, Assembly-CSharp
+        m_MethodName: generateBugs
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3873,12 +3865,8 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Ant
-      m_Image: {fileID: 21300000, guid: 7bc71a759f67ffe46ad508eebe1ccdf4, type: 3}
-    - m_Text: Spider
-      m_Image: {fileID: 21300000, guid: 7f7f6b19d2fef714099e37a1b64b4c21, type: 3}
-    - m_Text: Beetle
-      m_Image: {fileID: 21300000, guid: 9365860c9a584ef42829f688296c60c9, type: 3}
+    - m_Text: None
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3965,11 +3953,7 @@ MonoBehaviour:
   ant_prefab: {fileID: 383981328592123655, guid: 1efad4d13a53b6146869932fc049035d, type: 3}
   spider_prefab: {fileID: 5896893510625795165, guid: 9dab562b468090c439150c3f03eba66a, type: 3}
   beetle_prefab: {fileID: 7058881335459126599, guid: 1f2324b914f37c24abadacc9ad464203, type: 3}
-  antScript: {fileID: 0}
-  spiderScript: {fileID: 0}
-  beetleScript: {fileID: 0}
-  bugList:
-  - {fileID: 0}
+  bugList: []
   numBugsToGenerate: 3
 --- !u!4 &1537632860
 Transform:
@@ -4331,7 +4315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ant
+  m_text: None
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5165,7 +5149,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ant
+  m_text: None
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

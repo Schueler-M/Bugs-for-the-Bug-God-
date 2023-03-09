@@ -6,14 +6,18 @@ public class beetle : Player
 {
     HealthBarScript hpBar;
     // Start is called before the first frame update
-    float curhp = 1000;
+    public float curhp = 1000;
+    public int curSpeed = 5;
+    public int curAtk = 50;
+    public int curDef = 80;
+    public int startPrice = 1000;
     void Start()
     {
         hpBar = transform.Find("HealthBar Canvas").GetComponent<HealthBarScript>();
-        speed = 5;
+        speed = curSpeed;
         hp = curhp;
-        atk = 50;
-        def = 80;
+        atk = curAtk;
+        def = curDef;
     }
 
     // Update is called once per frame
