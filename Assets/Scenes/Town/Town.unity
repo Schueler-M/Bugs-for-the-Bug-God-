@@ -5568,7 +5568,7 @@ MonoBehaviour:
   shopUI: {fileID: 1302596429}
   altarUI: {fileID: 528368908}
   pubUI: {fileID: 1841361456}
-  camera: {fileID: 963194227}
+  cameraC: {fileID: 963194227}
   sword: {fileID: 2800000, guid: f6024f5f6ff96094bbf0afa47bb82e21, type: 3}
   hatchet: {fileID: 2800000, guid: cb718c358f6eb624c90a290e69d3bab7, type: 3}
   swatchet: {fileID: 2800000, guid: dc0e906a09ddda242bb527df76906351, type: 3}
@@ -9183,11 +9183,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4944559223813419333, guid: 034023ff02a37fc47aab6bc6c49bf15b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -40
+      value: -28.3
       objectReference: {fileID: 0}
     - target: {fileID: 4944559223813419333, guid: 034023ff02a37fc47aab6bc6c49bf15b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.867886
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4944559223813419333, guid: 034023ff02a37fc47aab6bc6c49bf15b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11155,11 +11155,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4944559223813419333, guid: 034023ff02a37fc47aab6bc6c49bf15b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.394058
+      value: -11.1
       objectReference: {fileID: 0}
     - target: {fileID: 4944559223813419333, guid: 034023ff02a37fc47aab6bc6c49bf15b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -40
+      value: -26.9
       objectReference: {fileID: 0}
     - target: {fileID: 4944559223813419333, guid: 034023ff02a37fc47aab6bc6c49bf15b, type: 3}
       propertyPath: m_LocalPosition.z
