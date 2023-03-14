@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
+
 public class BugGenerator : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -14,9 +15,9 @@ public class BugGenerator : MonoBehaviour
     ant antScript;
     spider spiderScript;
     beetle beetleScript;
-    string[] antNames = {"Antony", "Antie", "Anth", "Mr.Ant", "Ms.Ant" };
-    string[] spiderNames = { "SpiderNotMan", "Spidey", "Spi","Mr.Spider", "Ms.Spider"};
-    string[] beetleNames = { "Mr.BeatIt", "Mr.Beat", "Beatrice", "Mr.Beetle", "Ms.Beetle", "Ms.BeatIt", "Ms.Beat"};
+    string[] antNames = {"Antony", "Antie", "Anth", "Mr.Ant", "Ms.Ant", "Anton", "Antea", "Antario", "Antara", "Antanette", "Antaun" };
+    string[] spiderNames = { "SpiderNotMan", "Spidey", "Spi","Mr.Spider", "Ms.Spider","Webber", "Peter", "Parker","Webster", "Spike","Silky","Fang","Venom","Itsy","Bitsy" ,"Betty","Tiny","Smalls","Squirt","Sticky","Spins"};
+    string[] beetleNames = { "Mr.BeatIt", "Mr.Beat", "Beatrice", "Mr.Beetle", "Ms.Beetle", "Ms.BeatIt", "Ms.Beat", "Heracro", "Batal", "Bethley"};
     public List<GameObject> bugList;
     public int numBugsToGenerate = 3;
     void Start()

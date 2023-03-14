@@ -214,7 +214,7 @@ public class Player : MonoBehaviour
         {
             if (playerBugs[i].hp > 0 & (playerBugs[i].isActiveAndEnabled == false))
             {
-                float heal = playerBugs[i].damageHeal * (Time.deltaTime / 30);
+                float heal = (playerBugs[i].damageHeal * (Time.deltaTime))/ 30;
                 playerBugs[i].hp += heal;
                 playerBugs[i].damageHeal -= heal;
                 if (playerBugs[i].damageHeal < 0)
@@ -232,7 +232,7 @@ public class Player : MonoBehaviour
                 hitCooldown = 0.5f;
                 int dmg = (es.enemyBugs[es.index].atk * 2) - playerBugs[index].def;
                 playerBugs[index].hp -= dmg;
-                playerBugs[index].damageHeal = dmg / 3;
+                playerBugs[index].damageHeal += dmg / 3;
                 if (playerBugs[index].hp < 0)
                 {
                     partSys.Play();

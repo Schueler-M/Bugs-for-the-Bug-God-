@@ -126,7 +126,7 @@ public class enemy : MonoBehaviour
                 hitCooldown = 0.5f;
                 int dmg = (ps.playerBugs[ps.index].atk * 2) - enemyBugs[index].def;
                 enemyBugs[index].hp -= dmg;
-                enemyBugs[index].damageHeal = dmg / 3;
+                enemyBugs[index].damageHeal += dmg / 3;
                 if (enemyBugs[index].hp < 0)
                 {
                     partSys.Play();
@@ -179,7 +179,7 @@ public class enemy : MonoBehaviour
             totalHeal += enemyBugs[i].damageHeal; //used for ai, not healing and includes active bug
             if (enemyBugs[i].hp > 0 & (enemyBugs[i].isActiveAndEnabled == false))
             {
-                float heal = enemyBugs[i].damageHeal * (Time.deltaTime / 300);
+                float heal = (enemyBugs[i].damageHeal * (Time.deltaTime))/ 30;
                 enemyBugs[i].hp += heal;
                 enemyBugs[i].damageHeal -= heal;
                 if (enemyBugs[i].damageHeal < 0)
@@ -188,7 +188,7 @@ public class enemy : MonoBehaviour
             }
 
         }
-        if(totalHeal < 10)
+        if(totalHeal < 100)
             needDefHeal = false;
         else
             needDefHeal = true;

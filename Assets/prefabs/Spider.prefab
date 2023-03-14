@@ -175,7 +175,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7f7f6b19d2fef714099e37a1b64b4c21, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1488475eea4e2594da79a84bfb6b02ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -205,12 +205,19 @@ MonoBehaviour:
   atk: 1
   def: 1
   damageHeal: 0
+  name: 
+  price: 0
   right_camrot: 0
   left_camrot: 0
   mbpr: 0
   mbpl: 0
+  curhp: 800
   projectile: {fileID: 4311058675480484690, guid: 89b14905232e9104ca3275902d315874, type: 3}
   launchVelocity: 700
+  curSpeed: 10
+  curAtk: 80
+  curDef: 50
+  startPrice: 600
 --- !u!1001 &5098139231992174204
 PrefabInstance:
   m_ObjectHideFlags: 0

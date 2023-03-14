@@ -73,9 +73,9 @@ public class change_scene : MonoBehaviour
                     indexB++;
                 }
             }
-            if (i == 0 && indexA == 0)
+            if (i == 0)//i == 0 && indexA == 0
             {
-                print("You need a bug1!");
+                print("You need a to fill all bugs!");
                 yield break;
             }
             indexA++;
