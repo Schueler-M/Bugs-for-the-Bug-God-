@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class camScript : MonoBehaviour
 {
-    public GameObject hubUI, shopUI;
-    public Camera camera;
-    enum visibleOpt
+    public GameObject hubUI, shopUI, altarUI, pubUI;
+    public Camera cameraC;
+    public enum visibleOpt
     {
         hub,
         blacksmith,
@@ -33,24 +33,21 @@ public class camScript : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit hit;
-                Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+                Ray ray = cameraC.ScreenPointToRay(Input.mousePosition);
 
                 if (Physics.Raycast(ray, out hit))
                 {
                     if (hit.transform.name == "Altar")
                     {
-                        print("Altar");
+                        goTo(visibleOpt.altar);
                     }
                     else if (hit.transform.name == "Pub")
                     {
-                        print("Pub");
+                        goTo(visibleOpt.pub);
                     }
                     else if (hit.transform.name == "Store")
                     {
-                        print("Store");
-                        hubUI.SetActive(false);
-                        shopUI.SetActive(true);
-                        curr = visibleOpt.blacksmith;
+                        goTo(visibleOpt.blacksmith);
                     }
                 }
             }
@@ -82,7 +79,7 @@ public class camScript : MonoBehaviour
 
     public void purchaseItem1()
     {
-        if(curr == visibleOpt.blacksmith && inv.Count <= 9)
+        if(curr == visibleOpt.blacksmith && inv.Count < 9)
         {
             inv.Add("sword");
         }
@@ -90,7 +87,7 @@ public class camScript : MonoBehaviour
 
     public void purchaseItem2()
     {
-        if (curr == visibleOpt.blacksmith && inv.Count <= 9)
+        if (curr == visibleOpt.blacksmith && inv.Count < 9)
         {
             inv.Add("hatchet");
         }
@@ -98,9 +95,51 @@ public class camScript : MonoBehaviour
 
     public void purchaseItem3()
     {
-        if (curr == visibleOpt.blacksmith && inv.Count <= 9)
+        if (curr == visibleOpt.blacksmith && inv.Count < 9)
         {
             inv.Add("swatchet");
         }
+    }
+
+    public void goBack()
+    {
+        goTo(visibleOpt.hub);
+    }
+
+    public void goTo(visibleOpt loc)
+    {
+        if (curr == visibleOpt.blacksmith)
+        {
+            shopUI.SetActive(false);
+        }
+        else if(curr == visibleOpt.hub)
+        {
+            hubUI.SetActive(false);
+        }
+        else if(curr == visibleOpt.altar)
+        {
+            altarUI.SetActive(false);
+        }
+        else if(curr == visibleOpt.pub)
+        {
+            pubUI.SetActive(false);
+        }
+        if (loc == visibleOpt.blacksmith)
+        {
+            shopUI.SetActive(true);
+        }
+        else if (loc == visibleOpt.hub)
+        {
+            hubUI.SetActive(true);
+        }
+        else if (loc == visibleOpt.altar)
+        {
+            altarUI.SetActive(true);
+        }
+        else if (loc == visibleOpt.pub)
+        {
+            pubUI.SetActive(true);
+        }
+        curr = loc;
     }
 }
