@@ -39,11 +39,12 @@ public class SavingLoading : MonoBehaviour
 
     public void optionsButton()
     {
-
+        SaveLoad.SaveData(new Inventory(null, null, 10, "test"));
     }
 
     public void quitButton()
     {
-
+        Inventory test = SaveLoad.LoadData();
+        textObj.text = test.test;
     }
 }
