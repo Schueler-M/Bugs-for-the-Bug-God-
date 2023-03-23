@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class SaveLoad
 {
-    public static void SaveData(Inventory inv)
+    public static string SaveData(Inventory inv)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/save.data";
@@ -15,6 +15,7 @@ public static class SaveLoad
 
         formatter.Serialize(stream, inv);
         stream.Close();
+        return path;
     }
 
     public static Inventory LoadData()
