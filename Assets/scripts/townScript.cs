@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class townScript : MonoBehaviour
 {
     public GameObject hubUI, shopUI, altarUI, pubUI;
@@ -16,13 +16,14 @@ public class townScript : MonoBehaviour
         pub
     }
     visibleOpt curr;
-    ArrayList inv = new ArrayList();
+    Inventory inv = new Inventory();
     public Texture sword;
     public Texture hatchet;
     public Texture swatchet;
     void Start()
     {
         curr = visibleOpt.hub;
+        inv.Load();
     }
 
     // Update is called once per frame
@@ -55,49 +56,79 @@ public class townScript : MonoBehaviour
         else if(curr == visibleOpt.blacksmith)
         {
             int count = 1;
-            foreach (var item in inv)
+            for (int i = 0; i < 9; i++)
             {
-                string objName = "Main Camera/Canvas/ShopUI/Inventory/InvSlot (" + count + ")";
-                GameObject obj = GameObject.Find(objName);
-                RawImage m_RawImage = obj.GetComponent<RawImage>();
-                if(item.ToString() == "sword")
+                if(inv.inventory[i] != null)
                 {
-                    m_RawImage.texture = sword;
+                    string objName = "Main Camera/Canvas/ShopUI/Inventory/InvSlot (" + count + ")";
+                    GameObject obj = GameObject.Find(objName);
+                    RawImage m_RawImage = obj.GetComponent<RawImage>();
+                    if (inv.inventory[i] == "sword")
+                    {
+                        m_RawImage.texture = sword;
+                    }
+                    else if (inv.inventory[i] == "hatchet")
+                    {
+                        m_RawImage.texture = hatchet;
+                    }
+                    else if (inv.inventory[i] == "swatchet")
+                    {
+                        m_RawImage.texture = swatchet;
+                    }
+                    count += 1;
                 }
-                else if(item.ToString() == "hatchet")
-                {
-                    m_RawImage.texture = hatchet;
-                }
-                else if(item.ToString() == "swatchet")
-                {
-                    m_RawImage.texture = swatchet;
-                }
-                count += 1;
             }
         }
     }
 
     public void purchaseItem1()
     {
-        if(curr == visibleOpt.blacksmith && inv.Count < 9)
+        if (curr == visibleOpt.blacksmith)
         {
-            inv.Add("sword");
+            for (int i = 0; i < 9; i++)
+            {
+                if (inv.inventory[i] == null)
+                {
+                    inv.inventory[i] = "sword";
+                    inv.Save();
+                    return;
+                }
+            }
+            Debug.Log("No Open Inv Slot");
         }
     }
 
     public void purchaseItem2()
     {
-        if (curr == visibleOpt.blacksmith && inv.Count < 9)
+        if (curr == visibleOpt.blacksmith)
         {
-            inv.Add("hatchet");
+            for (int i = 0; i < 9; i++)
+            {
+                if (inv.inventory[i] == null)
+                {
+                    inv.inventory[i] = "hatchet";
+                    inv.Save();
+                    return;
+                }
+            }
+            Debug.Log("No Open Inv Slot");
         }
     }
 
     public void purchaseItem3()
     {
-        if (curr == visibleOpt.blacksmith && inv.Count < 9)
+        if (curr == visibleOpt.blacksmith)
         {
-            inv.Add("swatchet");
+            for(int i = 0; i < 9; i++)
+            {
+                if(inv.inventory[i] == null)
+                {
+                    inv.inventory[i] = "swatchet";
+                    inv.Save();
+                    return;
+                }
+            }
+            Debug.Log("No Open Inv Slot");
         }
     }
 
@@ -141,5 +172,46 @@ public class townScript : MonoBehaviour
             pubUI.SetActive(true);
         }
         curr = loc;
+    }
+
+    public void sacLeft()
+    {
+        if (curr == visibleOpt.blacksmith)
+        {
+            if (inv.bugs[0] != null)
+            {
+                inv.bugs[0] = null;
+                inv.Save();
+            }
+        }
+    }
+
+    public void sacMid()
+    {
+        if (curr == visibleOpt.blacksmith)
+        {
+            if (inv.bugs[1] != null)
+            {
+                inv.bugs[1] = null;
+                inv.Save();
+            }
+        }
+    }
+
+    public void sacRight()
+    {
+        if (curr == visibleOpt.blacksmith)
+        {
+            if (inv.bugs[2] != null)
+            {
+                inv.bugs[2] = null;
+                inv.Save();
+            }
+        }
+    }
+
+    public void backToMenu()
+    {
+        SceneManager.LoadScene("Assets/Scenes/MidMenu.unity");
     }
 }

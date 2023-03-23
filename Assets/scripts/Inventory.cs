@@ -5,11 +5,13 @@ using UnityEngine;
 [System.Serializable]
 public class Inventory
 {
-    public string[] inventory;
-    public string[] bugs;
-    public int gold;
+    public string[] inventory = new string[9];
+    public string[] bugs = new string[3];
+    public int gold = 0;
     
-    public Inventory() { }
+    public Inventory() {
+        
+    }
 
     public Inventory(string[] inv, string[] newBugs, int newGold) 
     {
@@ -31,5 +33,17 @@ public class Inventory
     public void setGold(int newGold)
     {
         gold = newGold;
+    }
+
+    public string Save()
+    {
+        return SaveLoad.SaveData(this);
+    }
+    public void Load()
+    {
+        Inventory temp = SaveLoad.LoadData();
+        inventory = temp.inventory;
+        bugs = temp.bugs;
+        gold = temp.gold;
     }
 }
