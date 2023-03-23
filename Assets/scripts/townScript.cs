@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class townScript : MonoBehaviour
 {
     public GameObject hubUI, shopUI, altarUI, pubUI;
@@ -208,5 +208,10 @@ public class townScript : MonoBehaviour
                 inv.Save();
             }
         }
+    }
+
+    public void backToMenu()
+    {
+        SceneManager.LoadScene("Assets/Scenes/MidMenu.unity");
     }
 }
