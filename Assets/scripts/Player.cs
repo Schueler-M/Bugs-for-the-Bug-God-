@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -248,7 +249,8 @@ public class Player : MonoBehaviour
                         if (i == 2)
                         {
                             //GAMEOVER
-                            Destroy(gameObject);
+                            SceneManager.LoadScene("Lose_Screen");
+                            //Destroy(gameObject);
                         }
                     }
                     getIcons();

@@ -384,7 +384,6 @@ GameObject:
   - component: {fileID: 332894299931353241}
   - component: {fileID: 7114043857969328602}
   - component: {fileID: 2255234568979740028}
-  - component: {fileID: 8860751802411620660}
   m_Layer: 0
   m_Name: Antenna_14
   m_TagString: Untagged
@@ -457,20 +456,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8860751802411620660
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346553052256759234}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &410160527139830837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,7 +1033,6 @@ GameObject:
   - component: {fileID: 8615986121597879013}
   - component: {fileID: 8710289285160377685}
   - component: {fileID: 5339411545542380430}
-  - component: {fileID: 1221443922813111608}
   m_Layer: 0
   m_Name: Antenna_10
   m_TagString: Untagged
@@ -1121,20 +1105,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1221443922813111608
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680835949351102147}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &680970612236912433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,7 +1311,6 @@ GameObject:
   - component: {fileID: 178469801389960893}
   - component: {fileID: 2105632562704432585}
   - component: {fileID: 953790937620107921}
-  - component: {fileID: 3645716220120321145}
   m_Layer: 0
   m_Name: Antenna_5
   m_TagString: Untagged
@@ -1414,20 +1383,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3645716220120321145
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911266587317258185}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &933495058668399638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,7 +1394,6 @@ GameObject:
   - component: {fileID: 6318216177171096878}
   - component: {fileID: 7581131729353893256}
   - component: {fileID: 727902061707576041}
-  - component: {fileID: 5626095522485370110}
   m_Layer: 0
   m_Name: Antenna_3
   m_TagString: Untagged
@@ -1512,20 +1466,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5626095522485370110
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 933495058668399638}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &990219404588878863
 GameObject:
   m_ObjectHideFlags: 0
@@ -3144,7 +3084,6 @@ GameObject:
   - component: {fileID: 3813188711091139506}
   - component: {fileID: 1571891804765287215}
   - component: {fileID: 5021540577584735211}
-  - component: {fileID: 5060261406707205011}
   m_Layer: 0
   m_Name: Antenna_1
   m_TagString: Untagged
@@ -3217,20 +3156,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5060261406707205011
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2165727298659692231}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &2176277472133426340
 GameObject:
   m_ObjectHideFlags: 0
@@ -3973,7 +3898,6 @@ GameObject:
   - component: {fileID: 5829640592963547375}
   - component: {fileID: 2098104333113662778}
   - component: {fileID: 4369892744563255423}
-  - component: {fileID: 1758242480123137347}
   m_Layer: 0
   m_Name: Antenna_2
   m_TagString: Untagged
@@ -4046,20 +3970,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1758242480123137347
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2618776438912992913}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &2679701398139060811
 GameObject:
   m_ObjectHideFlags: 0
@@ -4071,7 +3981,6 @@ GameObject:
   - component: {fileID: 7288907306749560035}
   - component: {fileID: 7470314363842057713}
   - component: {fileID: 9187392399102318138}
-  - component: {fileID: 8077194074345067673}
   m_Layer: 0
   m_Name: Antenna_9
   m_TagString: Untagged
@@ -4144,20 +4053,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8077194074345067673
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2679701398139060811}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &2764539885934156379
 GameObject:
   m_ObjectHideFlags: 0
@@ -5276,7 +5171,6 @@ GameObject:
   - component: {fileID: 7071143122769263548}
   - component: {fileID: 3113284015901502953}
   - component: {fileID: 2522617586479086291}
-  - component: {fileID: 6187045210663794977}
   m_Layer: 0
   m_Name: Antenna_13
   m_TagString: Untagged
@@ -5349,20 +5243,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6187045210663794977
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3569037741725900251}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &3616253171069949540
 GameObject:
   m_ObjectHideFlags: 0
@@ -5374,7 +5254,6 @@ GameObject:
   - component: {fileID: 2592846277519224632}
   - component: {fileID: 9098192075812654823}
   - component: {fileID: 7425470472418927163}
-  - component: {fileID: 7107374271347326203}
   m_Layer: 0
   m_Name: Antenna_5
   m_TagString: Untagged
@@ -5447,20 +5326,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7107374271347326203
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3616253171069949540}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &3724900120094845453
 GameObject:
   m_ObjectHideFlags: 0
@@ -5668,7 +5533,6 @@ GameObject:
   - component: {fileID: 4674155203173006542}
   - component: {fileID: 3876705589520338954}
   - component: {fileID: 371807438200302914}
-  - component: {fileID: 8449007920322418834}
   m_Layer: 0
   m_Name: Antenna_2
   m_TagString: Untagged
@@ -5741,20 +5605,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8449007920322418834
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3805537795020918565}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &3996675158342548255
 GameObject:
   m_ObjectHideFlags: 0
@@ -6006,7 +5856,6 @@ GameObject:
   - component: {fileID: 2538237191661334354}
   - component: {fileID: 9021786233498720804}
   - component: {fileID: 5291417423682801756}
-  - component: {fileID: 8875271520741804887}
   m_Layer: 0
   m_Name: Antenna_7
   m_TagString: Untagged
@@ -6079,20 +5928,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8875271520741804887
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4204784312609312136}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &4205277681623976820
 GameObject:
   m_ObjectHideFlags: 0
@@ -6104,7 +5939,6 @@ GameObject:
   - component: {fileID: 426706468503165480}
   - component: {fileID: 7878892719561428250}
   - component: {fileID: 8526798554239118755}
-  - component: {fileID: 7360146848982026579}
   m_Layer: 0
   m_Name: Antenna_13
   m_TagString: Untagged
@@ -6177,20 +6011,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7360146848982026579
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4205277681623976820}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &4220201388219310111
 GameObject:
   m_ObjectHideFlags: 0
@@ -7216,7 +7036,6 @@ GameObject:
   - component: {fileID: 8805165231368251120}
   - component: {fileID: 1014736818425576417}
   - component: {fileID: 8738383651939886300}
-  - component: {fileID: 777077099409211914}
   m_Layer: 0
   m_Name: Antenna_3
   m_TagString: Untagged
@@ -7289,20 +7108,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &777077099409211914
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4850423537967128199}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &4863928248341258010
 GameObject:
   m_ObjectHideFlags: 0
@@ -7789,7 +7594,6 @@ GameObject:
   - component: {fileID: 8572734345441256280}
   - component: {fileID: 8968731607556378630}
   - component: {fileID: 5132333326249395627}
-  - component: {fileID: 999818226745460667}
   m_Layer: 0
   m_Name: Antenna_4
   m_TagString: Untagged
@@ -7862,20 +7666,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &999818226745460667
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5644946830030251180}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &5670970884389063006
 GameObject:
   m_ObjectHideFlags: 0
@@ -8668,7 +8458,6 @@ GameObject:
   - component: {fileID: 62501817195979001}
   - component: {fileID: 3595821978232781411}
   - component: {fileID: 6367321242676111541}
-  - component: {fileID: 5623318119531522505}
   m_Layer: 0
   m_Name: Antenna_11
   m_TagString: Untagged
@@ -8741,20 +8530,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5623318119531522505
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6095300225797844387}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &6154627723628795018
 GameObject:
   m_ObjectHideFlags: 0
@@ -8864,7 +8639,6 @@ GameObject:
   - component: {fileID: 7808536066068540020}
   - component: {fileID: 341718722854990295}
   - component: {fileID: 4032012408549199276}
-  - component: {fileID: 4141824795083958469}
   m_Layer: 0
   m_Name: Antenna_8
   m_TagString: Untagged
@@ -8937,20 +8711,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4141824795083958469
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6170496474729323501}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &6578736893786349978
 GameObject:
   m_ObjectHideFlags: 0
@@ -8962,7 +8722,6 @@ GameObject:
   - component: {fileID: 1577601613928092342}
   - component: {fileID: 739571179527877746}
   - component: {fileID: 8220572068405935019}
-  - component: {fileID: 8279639442833332670}
   m_Layer: 0
   m_Name: Antenna_11
   m_TagString: Untagged
@@ -9035,20 +8794,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8279639442833332670
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6578736893786349978}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &6886266824051402709
 GameObject:
   m_ObjectHideFlags: 0
@@ -9157,7 +8902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3740973972522927753}
   m_Layer: 0
-  m_Name: Ant
+  m_Name: Ant (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9243,7 +8988,6 @@ GameObject:
   - component: {fileID: 2452617002330148167}
   - component: {fileID: 5692861900671777078}
   - component: {fileID: 8724837158810657211}
-  - component: {fileID: 3536038453190163424}
   m_Layer: 0
   m_Name: Antenna_14
   m_TagString: Untagged
@@ -9316,20 +9060,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3536038453190163424
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7096688282687148202}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &7136259463431694236
 GameObject:
   m_ObjectHideFlags: 0
@@ -9341,7 +9071,6 @@ GameObject:
   - component: {fileID: 8504683956687253399}
   - component: {fileID: 2188036268933763700}
   - component: {fileID: 1627247974715691579}
-  - component: {fileID: 2554853551276501932}
   m_Layer: 0
   m_Name: Antenna_9
   m_TagString: Untagged
@@ -9414,20 +9143,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2554853551276501932
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7136259463431694236}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &7195616571889402375
 GameObject:
   m_ObjectHideFlags: 0
@@ -9439,7 +9154,6 @@ GameObject:
   - component: {fileID: 1063893282550381775}
   - component: {fileID: 9009549044646464835}
   - component: {fileID: 821478951349149671}
-  - component: {fileID: 4818607431268895264}
   m_Layer: 0
   m_Name: Antenna_1
   m_TagString: Untagged
@@ -9512,20 +9226,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4818607431268895264
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7195616571889402375}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &7246253463728592661
 GameObject:
   m_ObjectHideFlags: 0
@@ -10060,7 +9760,6 @@ GameObject:
   - component: {fileID: 3295022964016673410}
   - component: {fileID: 5238655571733449615}
   - component: {fileID: 6494656816766336466}
-  - component: {fileID: 2740029784505219758}
   m_Layer: 0
   m_Name: Antenna_4
   m_TagString: Untagged
@@ -10133,20 +9832,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2740029784505219758
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7437665567590444691}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &7456216211925190523
 GameObject:
   m_ObjectHideFlags: 0
@@ -10354,7 +10039,6 @@ GameObject:
   - component: {fileID: 8272835649229948338}
   - component: {fileID: 3586555826054475551}
   - component: {fileID: 8210557726301617881}
-  - component: {fileID: 3260633568547387156}
   m_Layer: 0
   m_Name: Antenna_12
   m_TagString: Untagged
@@ -10427,20 +10111,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3260633568547387156
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7465681149190322435}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &7682245900136933162
 GameObject:
   m_ObjectHideFlags: 0
@@ -10452,7 +10122,6 @@ GameObject:
   - component: {fileID: 7633889257866434684}
   - component: {fileID: 8202142807472964042}
   - component: {fileID: 6182867502785857665}
-  - component: {fileID: 2525407518610011320}
   m_Layer: 0
   m_Name: Antenna_12
   m_TagString: Untagged
@@ -10525,20 +10194,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2525407518610011320
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7682245900136933162}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &7888325748837081327
 GameObject:
   m_ObjectHideFlags: 0
@@ -11136,7 +10791,6 @@ GameObject:
   - component: {fileID: 5060821751946346283}
   - component: {fileID: 8291249666850731976}
   - component: {fileID: 4297140351619342233}
-  - component: {fileID: 25231019812867150}
   m_Layer: 0
   m_Name: Antenna_6
   m_TagString: Untagged
@@ -11209,20 +10863,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &25231019812867150
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8443491545426746173}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &8582124380944798001
 GameObject:
   m_ObjectHideFlags: 0
@@ -11430,7 +11070,6 @@ GameObject:
   - component: {fileID: 2296382641758903748}
   - component: {fileID: 3332279887880700674}
   - component: {fileID: 5612228751571523477}
-  - component: {fileID: 6112850465812425303}
   m_Layer: 0
   m_Name: Antenna_10
   m_TagString: Untagged
@@ -11503,20 +11142,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6112850465812425303
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8609441816349164457}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &8647538502396535904
 GameObject:
   m_ObjectHideFlags: 0
@@ -11626,7 +11251,6 @@ GameObject:
   - component: {fileID: 2986586316025406564}
   - component: {fileID: 1524596924620621226}
   - component: {fileID: 9187853951506240621}
-  - component: {fileID: 390331180844199478}
   m_Layer: 0
   m_Name: Antenna_8
   m_TagString: Untagged
@@ -11699,20 +11323,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &390331180844199478
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8648206034799364413}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &8836723060011966727
 GameObject:
   m_ObjectHideFlags: 0
@@ -11920,7 +11530,6 @@ GameObject:
   - component: {fileID: 1319413524461735642}
   - component: {fileID: 1204961739658055665}
   - component: {fileID: 368009267949729181}
-  - component: {fileID: 7911736993192920687}
   m_Layer: 0
   m_Name: Antenna_7
   m_TagString: Untagged
@@ -11993,20 +11602,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7911736993192920687
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8870348408231416333}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &9146121601935953010
 GameObject:
   m_ObjectHideFlags: 0
@@ -12115,7 +11710,6 @@ GameObject:
   - component: {fileID: 6641856457760216916}
   - component: {fileID: 3167138802113223114}
   - component: {fileID: 7939503984603276905}
-  - component: {fileID: 3687160815303470175}
   m_Layer: 0
   m_Name: Antenna_6
   m_TagString: Untagged
@@ -12188,17 +11782,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3687160815303470175
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9198936818319707500}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

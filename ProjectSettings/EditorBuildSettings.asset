@@ -17,5 +17,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Town/Town.unity
     guid: bf724831f6b46ca4392a1ad93bdc371b
+  - enabled: 1
+    path: Assets/Scenes/Main_Menu.unity
+    guid: e4657f15c46d3b9469f6d05937b3d2b0
+  - enabled: 1
+    path: Assets/Scenes/Lose_Screen.unity
+    guid: 7b154b6b95d178645ae2a6138a194565
+  - enabled: 1
+    path: Assets/Scenes/Win_Screen.unity
+    guid: 8a9979dade19c9249b8c68563c6cb2df
+  - enabled: 1
+    path: Assets/Scenes/MidMenu.unity
+    guid: 1238b01e5714c52408af8e8d3082c522
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 7bcab2efa62a57144a08f8e64dc9dda4, type: 2}

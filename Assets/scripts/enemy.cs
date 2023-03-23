@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class enemy : MonoBehaviour
@@ -53,7 +54,27 @@ public class enemy : MonoBehaviour
         if (Vector3.Distance(player.transform.position, transform.position) <= 20)
         {
             player_dest = true;
-            agent.SetDestination(player.transform.position); 
+            GameObject curBug = null;
+            Transform[] allChildren = player.GetComponentsInChildren<Transform>();
+            foreach (Transform child in allChildren)
+            {
+                if (child.gameObject.activeInHierarchy && (child.gameObject.name == "ant(Clone)" || child.gameObject.name == "beetle(Clone)" || child.gameObject.name == "spider(Clone)"))
+                {
+                    curBug = child.gameObject;
+                    break;
+                }
+            }
+
+            //agent.SetDestination(player.transform.position + (-2 * transform.forward));
+            if (curBug != null)
+            {
+                print(curBug.name);
+                Vector3 bugSize = curBug.GetComponent<BoxCollider>().size;
+                print(bugSize);
+                agent.SetDestination(player.transform.position + (-bugSize.z) * transform.forward);
+            }
+            else
+                agent.SetDestination(player.transform.position + (-2 * transform.forward));
         }
         else
         {
@@ -169,7 +190,11 @@ public class enemy : MonoBehaviour
             //print("speedIndex: " + speedIndex.ToString() + " atkIndex: " + atkIndex.ToString() + " defIndex: " + defIndex.ToString());
         }
         if(deadCount >= 3)
+        {
             Destroy(gameObject);
+            //Do Win Stuff
+            SceneManager.LoadScene("Win_Screen");
+        }
     }
     void healHurt()
     {

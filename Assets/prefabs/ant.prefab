@@ -891,6 +891,7 @@ GameObject:
   - component: {fileID: 383981328592123771}
   - component: {fileID: 383981328592123770}
   - component: {fileID: 383981328592123652}
+  - component: {fileID: 5756790364236255162}
   m_Layer: 0
   m_Name: ant
   m_TagString: Player
@@ -988,10 +989,29 @@ MonoBehaviour:
   def: 1
   damageHeal: 0
   name: 
+  price: 0
   right_camrot: 0
   left_camrot: 0
   mbpr: 0
   mbpl: 0
+  curhp: 500
+  curSpeed: 10
+  curAtk: 50
+  curDef: 30
+  startPrice: 300
+--- !u!65 &5756790364236255162
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383981328592123655}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9328506, y: 0.4488349, z: 1.3480594}
+  m_Center: {x: -0.033916593, y: -0.12050027, z: -0.44584835}
 --- !u!1 &398213120451793633
 GameObject:
   m_ObjectHideFlags: 0

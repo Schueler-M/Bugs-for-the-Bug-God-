@@ -24065,6 +24065,7 @@ GameObject:
   - component: {fileID: 7701907943703596249}
   - component: {fileID: 6433510022058540059}
   - component: {fileID: 8493299913534670292}
+  - component: {fileID: 6738907721401104118}
   m_Layer: 0
   m_Name: Beetle
   m_TagString: Untagged
@@ -24162,10 +24163,29 @@ MonoBehaviour:
   def: 1
   damageHeal: 0
   name: 
+  price: 0
   right_camrot: 0
   left_camrot: 0
   mbpr: 0
   mbpl: 0
+  curhp: 1000
+  curSpeed: 5
+  curAtk: 50
+  curDef: 80
+  startPrice: 1000
+--- !u!65 &6738907721401104118
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7058881335459126599}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2471983, y: 0.81192255, z: 3.7899384}
+  m_Center: {x: 0.14694905, y: -0.5741786, z: 0.49004674}
 --- !u!1 &7074070442890955110
 GameObject:
   m_ObjectHideFlags: 0

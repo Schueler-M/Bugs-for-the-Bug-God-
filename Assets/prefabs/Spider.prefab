@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 5896893510625795136}
   - component: {fileID: 5896893510625795167}
   - component: {fileID: 5896893510625795166}
+  - component: {fileID: 7154126833320231364}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -218,6 +219,19 @@ MonoBehaviour:
   curAtk: 80
   curDef: 50
   startPrice: 600
+--- !u!65 &7154126833320231364
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5896893510625795165}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6932204, y: 1.5433238, z: 3.5810394}
+  m_Center: {x: 0.04797566, y: -0.15879059, z: -0.16121072}
 --- !u!1001 &5098139231992174204
 PrefabInstance:
   m_ObjectHideFlags: 0
