@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class camScript : MonoBehaviour
+public class townScript : MonoBehaviour
 {
     public GameObject hubUI, shopUI, altarUI, pubUI;
     public Camera cameraC;
