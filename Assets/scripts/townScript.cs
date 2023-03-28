@@ -24,6 +24,9 @@ public class townScript : MonoBehaviour
     {
         curr = visibleOpt.hub;
         inv.Load();
+        dataManager data = GameObject.Find("DataManager").GetComponent<dataManager>();
+        data.addBugsToADropDown();
+
     }
 
     // Update is called once per frame

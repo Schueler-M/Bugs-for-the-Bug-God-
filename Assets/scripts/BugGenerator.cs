@@ -12,6 +12,7 @@ public class BugGenerator : MonoBehaviour
     public GameObject ant_prefab;
     public GameObject spider_prefab;
     public GameObject beetle_prefab;
+    public bool isInShop = false;
     ant antScript;
     spider spiderScript;
     beetle beetleScript;
@@ -20,6 +21,9 @@ public class BugGenerator : MonoBehaviour
     string[] beetleNames = { "Mr.BeatIt", "Mr.Beat", "Beatrice", "Mr.Beetle", "Ms.Beetle", "Ms.BeatIt", "Ms.Beat", "Heracro", "Batal", "Bethley"};
     public List<GameObject> bugList;
     public int numBugsToGenerate = 3;
+    TMP_Dropdown dropOptA;
+    TMP_Dropdown dropOptB;
+    TMP_Dropdown dropOptC;
     void Start()
     {
 
@@ -33,14 +37,21 @@ public class BugGenerator : MonoBehaviour
 
     public void generateBugs()
     {
-        GameObject dropobjA = GameObject.Find("Dropdown");
-        TMP_Dropdown dropOptA = dropobjA.GetComponent<TMP_Dropdown>();
+        if (isInShop == false)
+        {
+            GameObject dropobjA = GameObject.Find("Dropdown");
+            dropOptA = dropobjA.GetComponent<TMP_Dropdown>();
 
-        GameObject dropobjB = GameObject.Find("DropdownB");
-        TMP_Dropdown dropOptB = dropobjB.GetComponent<TMP_Dropdown>();
+            GameObject dropobjB = GameObject.Find("DropdownB");
+            dropOptB = dropobjB.GetComponent<TMP_Dropdown>();
 
-        GameObject dropobjC = GameObject.Find("DropdownC");
-        TMP_Dropdown dropOptC = dropobjC.GetComponent<TMP_Dropdown>();
+            GameObject dropobjC = GameObject.Find("DropdownC");
+            dropOptC = dropobjC.GetComponent<TMP_Dropdown>();
+        }
+        else
+        {
+            bugList.Clear();
+        }
         for (int i = 0; i < numBugsToGenerate; i++)
         {
             int rand = Random.Range(0, 3);
@@ -81,20 +92,24 @@ public class BugGenerator : MonoBehaviour
             }
             new_inst.SetActive(false);
             bugList.Add(new_inst.gameObject);//= new_inst;//add to buglist
-
         }
-        List<string> options = new List<string>();
-        options.Add("None");
-        foreach (var option in bugList)
+        if (isInShop == false)
         {
-            options.Add(option.GetComponent<Player>().name);
+            List<string> options = new List<string>();
+            options.Add("None");
+            foreach (var option in bugList)
+            {
+                options.Add(option.GetComponent<Player>().name);
+            }
+            dropOptA.ClearOptions();
+            dropOptB.ClearOptions();
+            dropOptC.ClearOptions();
+            dropOptA.AddOptions(options);
+            dropOptB.AddOptions(options);
+            dropOptC.AddOptions(options);
         }
-        dropOptA.ClearOptions();
-        dropOptB.ClearOptions();
-        dropOptC.ClearOptions();
-        dropOptA.AddOptions(options);
-        dropOptB.AddOptions(options);
-        dropOptC.AddOptions(options);
+        dataManager data = GameObject.Find("DataManager").GetComponent<dataManager>();
+        data.gold -= 50;
 
     }
 }

@@ -249,6 +249,13 @@ public class Player : MonoBehaviour
                         if (i == 2)
                         {
                             //GAMEOVER
+                            dataManager data = GameObject.Find("DataManager").GetComponent<dataManager>();
+                            data.bugList.Clear();
+                            Transform dt = data.transform;
+                            foreach (Transform child in dt)
+                            {
+                                data.bugList.Add(child.gameObject);
+                            }
                             SceneManager.LoadScene("Lose_Screen");
                             //Destroy(gameObject);
                         }

@@ -80,10 +80,7 @@ public class change_scene : MonoBehaviour
             }
             indexA++;
         }
-        GameObject BugGen = GameObject.Find("GenBugs");
-        BugGenerator BugGenScript = BugGen.GetComponent<BugGenerator>();
         DontDestroyOnLoad(this.gameObject);
-        DontDestroyOnLoad(BugGen);
         SceneManager.LoadScene("Arena");
         // var op = SceneManager.LoadSceneAsync("NavTestNavmesh");
         //need coroutine
@@ -92,6 +89,7 @@ public class change_scene : MonoBehaviour
         GameObject player = GameObject.Find("Player");
         print(player);
         Player ps = player.GetComponent<Player>();
+        dataManager data = GameObject.Find("DataManager").GetComponent<dataManager>();
         List<Player> list = new List<Player>();
         for (int i = 0; i < values.Count; i++)
         {
@@ -110,7 +108,7 @@ public class change_scene : MonoBehaviour
                 new_inst = GameObject.Instantiate(beetle_prefab, player.transform);
             }
             ps.playerBugs[i] = new_inst.GetComponent<Player>();*/
-            GameObject curBug = BugGenScript.bugList[values[i] - 1];
+            GameObject curBug = data.bugList[values[i] - 1];
             curBug.transform.position = player.transform.position;
             curBug.transform.parent = player.transform;
             ps.playerBugs[i] = curBug.GetComponent<Player>();
@@ -118,6 +116,7 @@ public class change_scene : MonoBehaviour
         ps.playerBugs[0].gameObject.SetActive(true);
         ps.playerBugs[1].gameObject.SetActive(false);
         ps.playerBugs[2].gameObject.SetActive(false);
+        Destroy(transform.gameObject);
     }
     public void Quit()
     {

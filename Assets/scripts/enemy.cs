@@ -55,8 +55,9 @@ public class enemy : MonoBehaviour
         {
             player_dest = true;
             GameObject curBug = null;
-            Transform[] allChildren = player.GetComponentsInChildren<Transform>();
-            foreach (Transform child in allChildren)
+            //Transform[] allChildren = player.GetComponentsInChildren<Transform>();
+            Transform pt = player.transform;
+            foreach (Transform child in pt)
             {
                 if (child.gameObject.activeInHierarchy && (child.gameObject.name == "ant(Clone)" || child.gameObject.name == "beetle(Clone)" || child.gameObject.name == "spider(Clone)"))
                 {
@@ -193,6 +194,20 @@ public class enemy : MonoBehaviour
         {
             Destroy(gameObject);
             //Do Win Stuff
+            dataManager data = GameObject.Find("DataManager").GetComponent<dataManager>();
+            Transform pt = player.transform;
+            foreach (Transform child in pt)
+            {
+                print(child);
+                if (child.gameObject.activeInHierarchy && (child.gameObject.name == "ant(Clone)" || child.gameObject.name == "beetle(Clone)" || child.gameObject.name == "spider(Clone)"))
+                    pt.parent = data.transform;
+            }
+            data.bugList.Clear();
+            Transform dt = data.transform;
+            foreach (Transform child in dt)
+            {
+                data.bugList.Add(child.gameObject);
+            }
             SceneManager.LoadScene("Win_Screen");
         }
     }
