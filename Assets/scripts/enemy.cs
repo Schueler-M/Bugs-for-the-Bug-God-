@@ -59,7 +59,7 @@ public class enemy : MonoBehaviour
             Transform pt = player.transform;
             foreach (Transform child in pt)
             {
-                if (child.gameObject.activeInHierarchy && (child.gameObject.name == "ant(Clone)" || child.gameObject.name == "beetle(Clone)" || child.gameObject.name == "spider(Clone)"))
+                if (child.gameObject.activeInHierarchy && (child.gameObject.name == "ant(Clone)" || child.gameObject.name == "Beetle(Clone)" || child.gameObject.name == "Spider(Clone)"))
                 {
                     curBug = child.gameObject;
                     break;
@@ -69,9 +69,9 @@ public class enemy : MonoBehaviour
             //agent.SetDestination(player.transform.position + (-2 * transform.forward));
             if (curBug != null)
             {
-                print(curBug.name);
+                //print(curBug.name);
                 Vector3 bugSize = curBug.GetComponent<BoxCollider>().size;
-                print(bugSize);
+                //print(bugSize);
                 agent.SetDestination(player.transform.position + (-bugSize.z) * transform.forward);
             }
             else
@@ -195,12 +195,22 @@ public class enemy : MonoBehaviour
             Destroy(gameObject);
             //Do Win Stuff
             dataManager data = GameObject.Find("DataManager").GetComponent<dataManager>();
-            Transform pt = player.transform;
-            foreach (Transform child in pt)
+            Transform[] allChildren = player.GetComponentsInChildren<Transform>(true);
+            foreach (Transform child in allChildren)
             {
                 print(child);
-                if (child.gameObject.activeInHierarchy && (child.gameObject.name == "ant(Clone)" || child.gameObject.name == "beetle(Clone)" || child.gameObject.name == "spider(Clone)"))
-                    pt.parent = data.transform;
+                if (child.gameObject.name == "ant(Clone)" || child.gameObject.name == "Beetle(Clone)" || child.gameObject.name == "Spider(Clone)")
+                {
+                    Player psChild = child.GetComponent<Player>();
+                    if (psChild.hp > 0)
+                    {
+                        psChild.resetStats();
+                        psChild.upgradePoints += 1;
+                        child.gameObject.SetActive(false);
+                        child.parent = data.transform;
+                    }
+
+                }
             }
             data.bugList.Clear();
             Transform dt = data.transform;

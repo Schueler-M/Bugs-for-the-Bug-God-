@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public float damageHeal = 0;
     public string name;
     public int price = 0;
+    public int upgradePoints = 0;
 
     Vector2 move_vector;
     Rigidbody rb;
@@ -284,6 +285,34 @@ public class Player : MonoBehaviour
             ui_script_obj.addSprite(0, playerBugs[0].GetComponent<SpriteRenderer>().sprite, isAlive(0));
             ui_script_obj.addSprite(2, playerBugs[2].GetComponent<SpriteRenderer>().sprite, isAlive(2));
         }
+    }
+    public void resetStats()
+    {
+        ant antScript = GetComponent<ant>();
+        spider spiderScript = GetComponent<spider>();
+        beetle beetleScript = GetComponent<beetle>();
+        if(antScript != null)
+        {
+            hp = antScript.curhp;
+            atk = antScript.curAtk;
+            def = antScript.curDef;
+            speed = antScript.curSpeed;
+        }
+        else if (spiderScript != null)
+        {
+            hp = spiderScript.curhp;
+            atk = spiderScript.curAtk;
+            def = spiderScript.curDef;
+            speed = spiderScript.curSpeed;
+        }
+        else
+        {
+            hp = beetleScript.curhp;
+            atk = beetleScript.curAtk;
+            def = beetleScript.curDef;
+            speed = beetleScript.curSpeed;
+        }
+
     }
     bool isAlive(int i)
     {
