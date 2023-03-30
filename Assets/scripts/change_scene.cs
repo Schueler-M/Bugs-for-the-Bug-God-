@@ -20,7 +20,7 @@ public class change_scene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void LoadSceneNum(int num)
