@@ -9,6 +9,7 @@ public class dataManager : MonoBehaviour
 
     public List<GameObject> bugList;
     public int gold = 200;
+    public int goldWin = 0;
 
     private void Awake()
     {

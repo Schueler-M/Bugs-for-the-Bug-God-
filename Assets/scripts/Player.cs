@@ -18,6 +18,10 @@ public class Player : MonoBehaviour
     public int price = 0;
     public int upgradePoints = 0;
 
+    public Sprite AtkSprite;
+    public Sprite AtkSprite2;
+    public Sprite AtkSprite3;
+
     Vector2 move_vector;
     Rigidbody rb;
     float swapCooldown = 0.0f;
@@ -204,6 +208,13 @@ public class Player : MonoBehaviour
         {
             doHit = playerBugs[index].transform.Find("HitBox").gameObject;
             isAttacking = true;
+            int chance = Random.Range(0, 2);
+            if(chance == 0)
+                doHit.GetComponent<SpriteRenderer>().sprite = AtkSprite;
+            else if(chance == 1)
+                doHit.GetComponent<SpriteRenderer>().sprite = AtkSprite2;
+            else if(chance == 2)
+                doHit.GetComponent<SpriteRenderer>().sprite = AtkSprite3;
             doHit.SetActive(true);
             yield return new WaitForSeconds(f);
             isAttacking = false;

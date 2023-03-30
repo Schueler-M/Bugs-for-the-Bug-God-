@@ -5,10 +5,14 @@ using UnityEngine;
 public class BugsToDropdown : MonoBehaviour
 {
     // Start is called before the first frame update
+    public bool moreThenOne = true;
     void Start()
     {
         dataManager data = GameObject.Find("DataManager").GetComponent<dataManager>();
-        data.addBugsToDropDown();
+        if(moreThenOne)
+            data.addBugsToDropDown();
+        else
+            data.addBugsToADropDown();
     }
 
     // Update is called once per frame
@@ -16,4 +20,6 @@ public class BugsToDropdown : MonoBehaviour
     {
         
     }
+
+    
 }

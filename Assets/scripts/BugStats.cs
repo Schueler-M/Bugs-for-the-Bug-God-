@@ -20,6 +20,7 @@ public class BugStats : MonoBehaviour
     TextMeshProUGUI speed;
     TextMeshProUGUI atk;
     TextMeshProUGUI def;
+    TextMeshProUGUI up;
     dataManager data;
     float timer = 3.0f;
     void Start()
@@ -32,6 +33,7 @@ public class BugStats : MonoBehaviour
         speed = transform.Find("Speed").GetComponent<TextMeshProUGUI>();
         atk = transform.Find("Atk").GetComponent<TextMeshProUGUI>();
         def = transform.Find("Def").GetComponent<TextMeshProUGUI>();
+        up = transform.Find("Upgrade").GetComponent<TextMeshProUGUI>();
         type = GetComponent<TextMeshProUGUI>();
         print(type);
         print(name);
@@ -65,6 +67,8 @@ public class BugStats : MonoBehaviour
                     speed.text = "Speed: " + antScript.curSpeed;
                     atk.text = "Atk: " + antScript.curAtk;
                     def.text = "Def: " + antScript.curDef;
+                    try { up.text = "Upgrade Points: " + antScript.upgradePoints.ToString(); }
+                    finally { }
                 }
                 else if (spiderScript != null)
                 {
@@ -74,6 +78,8 @@ public class BugStats : MonoBehaviour
                     speed.text = "Speed: " + spiderScript.curSpeed;
                     atk.text = "Atk: " + spiderScript.curAtk;
                     def.text = "Def: " + spiderScript.curDef;
+                    try { up.text = "Upgrade Points: " + spiderScript.upgradePoints.ToString(); }
+                    finally { }
                 }
                 else if (beetleScript != null)
                 {
@@ -83,6 +89,8 @@ public class BugStats : MonoBehaviour
                     speed.text = "Speed: " + beetleScript.curSpeed;
                     atk.text = "Atk: " + beetleScript.curAtk;
                     def.text = "Def: " + beetleScript.curDef;
+                    try { up.text = "Upgrade Points: " + beetleScript.upgradePoints.ToString(); }
+                    finally { }
                 }
             }
             catch (Exception ex)
@@ -99,4 +107,144 @@ public class BugStats : MonoBehaviour
             //type.text = curBug.
         }
     }
+
+    public void upgradeHP()
+    {
+        curBug = data.bugList[dropOpt.value - 1];
+        ant antScript = curBug.GetComponent<ant>();
+        spider spiderScript = curBug.GetComponent<spider>();
+        beetle beetleScript = curBug.GetComponent<beetle>();
+        if (antScript != null)
+        {
+            if(antScript.upgradePoints > 0)
+            {
+                antScript.upgradePoints -= 1;
+                antScript.curhp += 100;
+                antScript.resetStats();
+            }
+        }
+        else if (spiderScript != null)
+        {
+            if (spiderScript.upgradePoints > 0)
+            {
+                spiderScript.upgradePoints -= 1;
+                spiderScript.curhp += 100;
+                spiderScript.resetStats();
+            }
+        }
+        else if (beetleScript != null)
+        {
+            if (beetleScript.upgradePoints > 0)
+            {
+                beetleScript.upgradePoints -= 1;
+                beetleScript.curhp += 100;
+                beetleScript.resetStats();
+            }
+        }
+    }
+
+    public void upgradeSpeed()
+    {
+        curBug = data.bugList[dropOpt.value - 1];
+        ant antScript = curBug.GetComponent<ant>();
+        spider spiderScript = curBug.GetComponent<spider>();
+        beetle beetleScript = curBug.GetComponent<beetle>();
+        if (antScript != null)
+        {
+            if (antScript.upgradePoints > 0)
+            {
+                antScript.upgradePoints -= 1;
+                antScript.curSpeed += 1;
+                antScript.resetStats();
+            }
+        }
+        else if (spiderScript != null)
+        {
+            if (spiderScript.upgradePoints > 0)
+            {
+                spiderScript.upgradePoints -= 1;
+                spiderScript.curSpeed += 1;
+                spiderScript.resetStats();
+            }
+        }
+        else if (beetleScript != null)
+        {
+            if (beetleScript.upgradePoints > 0)
+            {
+                beetleScript.upgradePoints -= 1;
+                beetleScript.curSpeed += 1;
+                beetleScript.resetStats();
+            }
+        }
+    }
+
+    public void upgradeAtk()
+    {
+        curBug = data.bugList[dropOpt.value - 1];
+        ant antScript = curBug.GetComponent<ant>();
+        spider spiderScript = curBug.GetComponent<spider>();
+        beetle beetleScript = curBug.GetComponent<beetle>();
+        if (antScript != null)
+        {
+            if (antScript.upgradePoints > 0)
+            {
+                antScript.upgradePoints -= 1;
+                antScript.curAtk += 10;
+                antScript.resetStats();
+            }
+        }
+        else if (spiderScript != null)
+        {
+            if (spiderScript.upgradePoints > 0)
+            {
+                spiderScript.upgradePoints -= 1;
+                spiderScript.curAtk += 10;
+                spiderScript.resetStats();
+            }
+        }
+        else if (beetleScript != null)
+        {
+            if (beetleScript.upgradePoints > 0)
+            {
+                beetleScript.upgradePoints -= 1;
+                beetleScript.curAtk += 10;
+                beetleScript.resetStats();
+            }
+        }
+    }
+    public void upgradeDef()
+    {
+        curBug = data.bugList[dropOpt.value - 1];
+        ant antScript = curBug.GetComponent<ant>();
+        spider spiderScript = curBug.GetComponent<spider>();
+        beetle beetleScript = curBug.GetComponent<beetle>();
+        if (antScript != null)
+        {
+            if (antScript.upgradePoints > 0)
+            {
+                antScript.upgradePoints -= 1;
+                antScript.curDef += 10;
+                antScript.resetStats();
+            }
+        }
+        else if (spiderScript != null)
+        {
+            if (spiderScript.upgradePoints > 0)
+            {
+                spiderScript.upgradePoints -= 1;
+                spiderScript.curDef += 10;
+                spiderScript.resetStats();
+            }
+        }
+        else if (beetleScript != null)
+        {
+            if (beetleScript.upgradePoints > 0)
+            {
+                beetleScript.upgradePoints -= 1;
+                beetleScript.curDef += 10;
+                beetleScript.resetStats();
+            }
+        }
+    }
+
 }
