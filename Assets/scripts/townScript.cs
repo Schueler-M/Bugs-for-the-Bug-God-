@@ -58,29 +58,7 @@ public class townScript : MonoBehaviour
         }
         else if(curr == visibleOpt.blacksmith)
         {
-            int count = 1;
-            for (int i = 0; i < 9; i++)
-            {
-                if(inv.inventory[i] != null)
-                {
-                    string objName = "Main Camera/Canvas/ShopUI/Inventory/InvSlot (" + count + ")";
-                    GameObject obj = GameObject.Find(objName);
-                    RawImage m_RawImage = obj.GetComponent<RawImage>();
-                    if (inv.inventory[i] == "sword")
-                    {
-                        m_RawImage.texture = sword;
-                    }
-                    else if (inv.inventory[i] == "hatchet")
-                    {
-                        m_RawImage.texture = hatchet;
-                    }
-                    else if (inv.inventory[i] == "swatchet")
-                    {
-                        m_RawImage.texture = swatchet;
-                    }
-                    count += 1;
-                }
-            }
+            refreshInv(inv);
         }
     }
 
@@ -216,5 +194,32 @@ public class townScript : MonoBehaviour
     public void backToMenu()
     {
         SceneManager.LoadScene("Assets/Scenes/MidMenu.unity");
+    }
+
+    public void refreshInv(Inventory inv)
+    {
+        int count = 1;
+        for (int i = 0; i < 9; i++)
+        {
+            if (inv.inventory[i] != null)
+            {
+                string objName = "InvSlot (" + count + ")";
+                GameObject obj = GameObject.Find(objName);
+                RawImage m_RawImage = obj.GetComponent<RawImage>();
+                if (inv.inventory[i] == "sword")
+                {
+                    m_RawImage.texture = sword;
+                }
+                else if (inv.inventory[i] == "hatchet")
+                {
+                    m_RawImage.texture = hatchet;
+                }
+                else if (inv.inventory[i] == "swatchet")
+                {
+                    m_RawImage.texture = swatchet;
+                }
+                count += 1;
+            }
+        }
     }
 }
