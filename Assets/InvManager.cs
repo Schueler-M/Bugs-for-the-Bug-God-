@@ -10,6 +10,7 @@ public class InvManager : MonoBehaviour
     public Texture sword;
     public Texture hatchet;
     public Texture swatchet;
+    int selected = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,5 +48,42 @@ public class InvManager : MonoBehaviour
                 count += 1;
             }
         }
+    }
+
+    void button1()
+    {
+        selected = 1;
+    }
+    void button2()
+    {
+        selected = 2;
+    }
+    void button3()
+    {
+        selected = 3;
+    }
+    void button4()
+    {
+        selected = 4;
+    }
+    void button5()
+    {
+        selected = 5;
+    }
+    void button6()
+    {
+        selected = 6;
+    }
+    void button7()
+    {
+        selected = 7;
+    }
+    void button8()
+    {
+        selected = 8;
+    }
+    void button9()
+    {
+        selected = 9;
     }
 }
