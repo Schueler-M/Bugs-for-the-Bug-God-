@@ -5,13 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class main_menu_script : MonoBehaviour
 {
+    public AudioClip otherClip;
+    AudioSource ButtonAudio;
+
+    void Start()
+    {
+        ButtonAudio = GetComponent<AudioSource>();
+        DontDestroyOnLoad(ButtonAudio);
+    }
+
     void Update(){
         if(Time.time > 0.45)
             //turns the animator off when the buttons reach desired location on screen
             gameObject.GetComponent<Animator>().enabled = false;
+
+        if (SceneManager.GetActiveScene().name != "Main_Menu")
+        {
+            if (!ButtonAudio.isPlaying)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     public void Play(){
+        PlayAudio();
+
         //put the shop or intended next scene in build order or use
         //the commented line with the appropriate scene name instead
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -21,10 +40,18 @@ public class main_menu_script : MonoBehaviour
 
     public void Options(){
         //Debug.Log("You can customize any option as long as it's the default");        //just for testing
+        PlayAudio();
     }
 
     public void Quit(){
+        PlayAudio();
+
         Application.Quit();
         //Debug.Log("Player Has Quit The Game");        //just for testing
+    }
+
+    private void PlayAudio()
+    {
+        ButtonAudio.PlayOneShot(otherClip);
     }
 }
