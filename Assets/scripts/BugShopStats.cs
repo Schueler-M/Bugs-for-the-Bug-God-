@@ -51,7 +51,7 @@ public class BugShopStats : MonoBehaviour
                 beetle beetleScript = curBug.GetComponent<beetle>();
                 if (antScript != null)
                 {
-                    type.text = "Bug" + (BugI + 1).ToString() + ": Ant";
+                    type.text = "Bug " + (BugI + 1).ToString() + ": Ant";
                     name.text = "Name: " + antScript.name;
                     hp.text = "HP: " + antScript.curhp;
                     speed.text = "Speed: " + antScript.curSpeed;
@@ -61,7 +61,7 @@ public class BugShopStats : MonoBehaviour
                 }
                 else if (spiderScript != null)
                 {
-                    type.text = "Bug" + (BugI + 1).ToString() + ": Spider";
+                    type.text = "Bug " + (BugI + 1).ToString() + ": Spider";
                     name.text = "Name: " + spiderScript.name;
                     hp.text = "HP: " + spiderScript.curhp;
                     speed.text = "Speed: " + spiderScript.curSpeed;
@@ -71,7 +71,7 @@ public class BugShopStats : MonoBehaviour
                 }
                 else if (beetleScript != null)
                 {
-                    type.text = "Bug" + (BugI + 1).ToString() + ": Beetle";
+                    type.text = "Bug " + (BugI + 1).ToString() + ": Beetle";
                     name.text = "Name: " + beetleScript.name;
                     hp.text = "HP: " + beetleScript.curhp;
                     speed.text = "Speed: " + beetleScript.curSpeed;
@@ -82,7 +82,7 @@ public class BugShopStats : MonoBehaviour
             }
             catch (Exception ex)
             {
-                type.text = "Bug" + (BugI + 1).ToString() + ":";
+                type.text = "Bug " + (BugI + 1).ToString() + ":";
                 name.text = "Name: ";
                 hp.text = "HP: ";
                 speed.text = "Speed: ";
