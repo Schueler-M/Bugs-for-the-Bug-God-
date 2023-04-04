@@ -22,7 +22,7 @@ public class BugStats : MonoBehaviour
     TextMeshProUGUI def;
     TextMeshProUGUI up;
     dataManager data;
-    float timer = 3.0f;
+    float timer = 0.3f;
     void Start()
     {
         BugGen = GameObject.Find("GenBugs");
@@ -45,7 +45,7 @@ public class BugStats : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 0)
         {
-            timer = 0.5f;
+            timer = 0.3f;
             if (BugI == 0)
                 dropobj = GameObject.Find("Dropdown");
             else if (BugI == 1)

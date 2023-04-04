@@ -29,9 +29,12 @@ public class enemy : MonoBehaviour
     private bool player_dest; // player is the destination or not
     private int search_timer;
 
+    AudioSource audioP;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioP = enemyBugs[index].GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         ps = player.GetComponent<Player>();
         speedIndex = 0;
@@ -149,11 +152,14 @@ public class enemy : MonoBehaviour
                 int dmg = (ps.playerBugs[ps.index].atk * 2) - enemyBugs[index].def;
                 enemyBugs[index].hp -= dmg;
                 enemyBugs[index].damageHeal += dmg / 3;
+                audioP.clip = ps.hitSound;   
                 if (enemyBugs[index].hp < 0)
                 {
+                    audioP.clip = ps.deathSound;
                     partSys.Play();
                     findBest();
                 }
+                audioP.Play();
             }
     }
 
@@ -250,6 +256,13 @@ public class enemy : MonoBehaviour
         {
             doHit = enemyBugs[index].transform.Find("HitBox").gameObject;
             isAttacking = true;
+            int chance = Random.Range(0, 3);
+            if (chance == 0)
+                doHit.GetComponent<SpriteRenderer>().sprite = ps.AtkSprite;
+            else if (chance == 1)
+                doHit.GetComponent<SpriteRenderer>().sprite = ps.AtkSprite2;
+            else if (chance == 2)
+                doHit.GetComponent<SpriteRenderer>().sprite = ps.AtkSprite3;
             doHit.SetActive(true);
             yield return new WaitForSeconds(f);
             isAttacking = false;

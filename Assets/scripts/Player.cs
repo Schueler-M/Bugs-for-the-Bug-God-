@@ -22,6 +22,10 @@ public class Player : MonoBehaviour
     public Sprite AtkSprite2;
     public Sprite AtkSprite3;
 
+    public AudioClip hitSound;
+    public AudioClip deathSound;
+    AudioSource audioP;
+
     Vector2 move_vector;
     Rigidbody rb;
     float swapCooldown = 0.0f;
@@ -43,6 +47,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        audioP = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         ui_game_obj = GameObject.Find("MidGameUI");
         ui_script_obj = ui_game_obj.GetComponent<MidGameUI>();
@@ -208,7 +213,7 @@ public class Player : MonoBehaviour
         {
             doHit = playerBugs[index].transform.Find("HitBox").gameObject;
             isAttacking = true;
-            int chance = Random.Range(0, 2);
+            int chance = Random.Range(0, 3);
             if(chance == 0)
                 doHit.GetComponent<SpriteRenderer>().sprite = AtkSprite;
             else if(chance == 1)
@@ -246,9 +251,11 @@ public class Player : MonoBehaviour
                 int dmg = (es.enemyBugs[es.index].atk * 2) - playerBugs[index].def;
                 playerBugs[index].hp -= dmg;
                 playerBugs[index].damageHeal += dmg / 3;
+                audioP.clip = hitSound;
                 if (playerBugs[index].hp < 0)
                 {
                     partSys.Play();
+                    audioP.clip = deathSound;
                     playerBugs[index].gameObject.SetActive(false);
                     for (int i = 0; i < playerBugs.Length; i++)
                     {
@@ -275,6 +282,7 @@ public class Player : MonoBehaviour
                     getIcons();
                     playerBugs[index].gameObject.SetActive(true);
                 }
+                audioP.Play();
             }
         }
     }

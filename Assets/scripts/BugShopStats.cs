@@ -20,7 +20,7 @@ public class BugShopStats : MonoBehaviour
     TextMeshProUGUI atk;
     TextMeshProUGUI def;
     TextMeshProUGUI price;
-    float timer = 3.0f;
+    float timer = 0.3f;
     void Start()
     {
         BugGen = GameObject.Find("GenBugs");
@@ -42,7 +42,7 @@ public class BugShopStats : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 0)
         {
-            timer = 0.5f;
+            timer = 0.3f;
             try
             {
                 curBug = BugGenScript.bugList[BugI];
