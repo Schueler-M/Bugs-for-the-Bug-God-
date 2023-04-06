@@ -11,7 +11,7 @@ public class shopUI : MonoBehaviour
     void Start()
     {
         data = GameObject.Find("DataManager").GetComponent<dataManager>();
-        gold = transform.Find("Gold").GetComponent<TextMeshProUGUI>();
+        gold = transform.Find("gold_icon").transform.Find("current_gold").GetComponent<TextMeshProUGUI>();
         gold.text = "Gold: " + data.gold.ToString();
     }
 
