@@ -988,10 +988,16 @@ MonoBehaviour:
   def: 1
   damageHeal: 0
   name: 
+  price: 0
   right_camrot: 0
   left_camrot: 0
   mbpr: 0
   mbpl: 0
+  curhp: 500
+  curSpeed: 10
+  curAtk: 50
+  curDef: 30
+  startPrice: 300
 --- !u!1 &398213120451793633
 GameObject:
   m_ObjectHideFlags: 0
