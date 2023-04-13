@@ -992,6 +992,7 @@ MonoBehaviour:
   name: 
   price: 0
   upgradePoints: 0
+  weapon: None
   AtkSprite: {fileID: 0}
   AtkSprite2: {fileID: 0}
   AtkSprite3: {fileID: 0}
@@ -1004,7 +1005,7 @@ MonoBehaviour:
   curhp: 500
   curSpeed: 10
   curAtk: 50
-  curDef: 30
+  curDef: 40
   startPrice: 300
 --- !u!65 &5756790364236255162
 BoxCollider:
@@ -1029,7 +1030,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 201db8e57caa66d48af47194f9c65387, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

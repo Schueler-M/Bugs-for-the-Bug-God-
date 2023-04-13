@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
     public string name;
     public int price = 0;
     public int upgradePoints = 0;
+    public string weapon = "None";
 
     public Sprite AtkSprite;
     public Sprite AtkSprite2;
@@ -249,6 +251,10 @@ public class Player : MonoBehaviour
             {
                 hitCooldown = 0.5f;
                 int dmg = (es.enemyBugs[es.index].atk * 2) - playerBugs[index].def;
+                if (dmg <= 10)
+                {
+                    dmg = 10;
+                }
                 playerBugs[index].hp -= dmg;
                 playerBugs[index].damageHeal += dmg / 3;
                 audioP.clip = hitSound;

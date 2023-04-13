@@ -150,10 +150,14 @@ public class enemy : MonoBehaviour
             {
                 hitCooldown = 0.5f;
                 int dmg = (ps.playerBugs[ps.index].atk * 2) - enemyBugs[index].def;
+                if(dmg <= 10)
+                {
+                    dmg = 10;
+                }
                 enemyBugs[index].hp -= dmg;
                 enemyBugs[index].damageHeal += dmg / 3;
                 audioP.clip = ps.hitSound;   
-                if (enemyBugs[index].hp < 0)
+                if (enemyBugs[index].hp < 0) //DEAD
                 {
                     audioP.clip = ps.deathSound;
                     partSys.Play();

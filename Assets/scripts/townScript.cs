@@ -4,6 +4,8 @@ using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
+
 public class townScript : MonoBehaviour
 {
     public GameObject hubUI, shopUI, altarUI, pubUI;
@@ -20,11 +22,14 @@ public class townScript : MonoBehaviour
     public Texture sword;
     public Texture hatchet;
     public Texture swatchet;
+    dataManager data;
+    InvDropdown altInvDrop;
     void Start()
     {
         curr = visibleOpt.hub;
         inv.Load();
-        dataManager data = GameObject.Find("DataManager").GetComponent<dataManager>();
+        data = GameObject.Find("DataManager").GetComponent<dataManager>();
+        altInvDrop = GameObject.Find("AltDropdown").GetComponent<InvDropdown>();
         data.addBugsToADropDown();
 
     }
@@ -66,16 +71,22 @@ public class townScript : MonoBehaviour
     {
         if (curr == visibleOpt.blacksmith)
         {
-            for (int i = 0; i < 9; i++)
+            if (data.gold >= 100)
             {
-                if (inv.inventory[i] == null)
+                altInvDrop = GameObject.Find("AltDropdown").GetComponent<InvDropdown>();
+                data.inv.Add("sword");
+                altInvDrop.refreshAltInv();
+                for (int i = 0; i < 9; i++)
                 {
-                    inv.inventory[i] = "sword";
-                    inv.Save();
-                    return;
+                    if (inv.inventory[i] == null)
+                    {
+                        inv.inventory[i] = "sword";
+                        inv.Save();
+                        return;
+                    }
                 }
+                Debug.Log("No Open Inv Slot");
             }
-            Debug.Log("No Open Inv Slot");
         }
     }
 
@@ -83,16 +94,24 @@ public class townScript : MonoBehaviour
     {
         if (curr == visibleOpt.blacksmith)
         {
-            for (int i = 0; i < 9; i++)
+            if (data.gold >= 100)
             {
-                if (inv.inventory[i] == null)
+                altInvDrop = GameObject.Find("AltDropdown").GetComponent<InvDropdown>();
+                data.inv.Add("hatchet");
+                altInvDrop.refreshAltInv();
+                data.gold -= 100;
+                for (int i = 0; i < 9; i++)
                 {
-                    inv.inventory[i] = "hatchet";
-                    inv.Save();
-                    return;
+                    if (inv.inventory[i] == null)
+                    {
+                        inv.inventory[i] = "hatchet";
+                        inv.Save();
+                        return;
+                    }
                 }
+                data.gold += 100;
+                Debug.Log("No Open Inv Slot");
             }
-            Debug.Log("No Open Inv Slot");
         }
     }
 
@@ -100,16 +119,24 @@ public class townScript : MonoBehaviour
     {
         if (curr == visibleOpt.blacksmith)
         {
-            for(int i = 0; i < 9; i++)
+            if (data.gold >= 150)
             {
-                if(inv.inventory[i] == null)
+                altInvDrop = GameObject.Find("AltDropdown").GetComponent<InvDropdown>();
+                data.gold -= 150;
+                data.inv.Add("swatchet");
+                altInvDrop.refreshAltInv();
+                for (int i = 0; i < 9; i++)
                 {
-                    inv.inventory[i] = "swatchet";
-                    inv.Save();
-                    return;
+                    if (inv.inventory[i] == null)
+                    {
+                        inv.inventory[i] = "swatchet";
+                        inv.Save();
+                        return;
+                    }
                 }
+
+                Debug.Log("No Open Inv Slot");
             }
-            Debug.Log("No Open Inv Slot");
         }
     }
 
