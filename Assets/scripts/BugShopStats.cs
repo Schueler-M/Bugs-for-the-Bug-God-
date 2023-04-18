@@ -89,12 +89,19 @@ public class BugShopStats : MonoBehaviour
                 {
                     type.text = "Bug " + (BugI + 1).ToString() + ":";
                 }
-                name.text = "Name: ";
-                hp.text = "HP: ";
-                speed.text = "Speed: ";
-                atk.text = "Atk: ";
-                def.text = "Def: ";
-                price.text = "Price: ";
+                try
+                {
+                    name.text = "Name: ";
+                    hp.text = "HP: ";
+                    speed.text = "Speed: ";
+                    atk.text = "Atk: ";
+                    def.text = "Def: ";
+                    price.text = "Price: ";
+                }
+                catch
+                {
+                    ;
+                }
                 //Debug.LogException(ex, this);
             }
 

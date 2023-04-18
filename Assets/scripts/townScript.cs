@@ -22,7 +22,7 @@ public class townScript : MonoBehaviour
     public Texture sword;
     public Texture hatchet;
     public Texture swatchet;
-    dataManager data;
+    public dataManager data;
     InvDropdown altInvDrop;
     void Start()
     {
@@ -69,12 +69,14 @@ public class townScript : MonoBehaviour
 
     public void purchaseItem1()
     {
+        data = GameObject.Find("DataManager").GetComponent<dataManager>();
         if (curr == visibleOpt.blacksmith)
         {
             if (data.gold >= 100)
             {
                 altInvDrop = GameObject.Find("AltDropdown").GetComponent<InvDropdown>();
                 data.inv.Add("sword");
+                data.gold -= 100;
                 altInvDrop.refreshAltInv();
                 for (int i = 0; i < 9; i++)
                 {
@@ -92,6 +94,7 @@ public class townScript : MonoBehaviour
 
     public void purchaseItem2()
     {
+        data = GameObject.Find("DataManager").GetComponent<dataManager>();
         if (curr == visibleOpt.blacksmith)
         {
             if (data.gold >= 100)
@@ -109,7 +112,6 @@ public class townScript : MonoBehaviour
                         return;
                     }
                 }
-                data.gold += 100;
                 Debug.Log("No Open Inv Slot");
             }
         }
@@ -117,6 +119,7 @@ public class townScript : MonoBehaviour
 
     public void purchaseItem3()
     {
+        data = GameObject.Find("DataManager").GetComponent<dataManager>();
         if (curr == visibleOpt.blacksmith)
         {
             if (data.gold >= 150)
