@@ -10,8 +10,15 @@ public class main_menu_script : MonoBehaviour
 
     void Start()
     {
-        ButtonAudio = GetComponent<AudioSource>();
-        DontDestroyOnLoad(ButtonAudio);
+        try
+        {
+            ButtonAudio = GetComponent<AudioSource>();
+            DontDestroyOnLoad(ButtonAudio);
+        }
+        catch
+        {
+            ;
+        }
     }
 
     void Update(){

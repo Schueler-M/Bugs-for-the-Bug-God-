@@ -23,17 +23,24 @@ public class BugShopStats : MonoBehaviour
     float timer = 0.3f;
     void Start()
     {
-        BugGen = GameObject.Find("GenBugs");
-        BugGenScript = BugGen.GetComponent<BugGenerator>();
-        name = transform.Find("Name").GetComponent<TextMeshProUGUI>();
-        hp = transform.Find("HP").GetComponent<TextMeshProUGUI>();
-        speed = transform.Find("Speed").GetComponent<TextMeshProUGUI>();
-        atk = transform.Find("Atk").GetComponent<TextMeshProUGUI>();
-        def = transform.Find("Def").GetComponent<TextMeshProUGUI>();
-        price = transform.Find("Price").GetComponent<TextMeshProUGUI>();
-        type = GetComponent<TextMeshProUGUI>();
-        print(type);
-        print(name);
+        try
+        {
+            BugGen = GameObject.Find("GenBugs");
+            BugGenScript = BugGen.GetComponent<BugGenerator>();
+            name = transform.Find("Name").GetComponent<TextMeshProUGUI>();
+            hp = transform.Find("HP").GetComponent<TextMeshProUGUI>();
+            speed = transform.Find("Speed").GetComponent<TextMeshProUGUI>();
+            atk = transform.Find("Atk").GetComponent<TextMeshProUGUI>();
+            def = transform.Find("Def").GetComponent<TextMeshProUGUI>();
+            price = transform.Find("Price").GetComponent<TextMeshProUGUI>();
+            type = GetComponent<TextMeshProUGUI>();
+            print(type);
+            print(name);
+        }
+        catch
+        {
+            ;
+        }
     }
 
     // Update is called once per frame

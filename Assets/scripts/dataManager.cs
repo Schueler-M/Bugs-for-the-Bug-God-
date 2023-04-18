@@ -63,18 +63,26 @@ public class dataManager : MonoBehaviour
     }
     public void addBugsToADropDown()
     {
-        TMP_Dropdown dropOptA;
-        GameObject dropobjA = GameObject.Find("Dropdown");
-        dropOptA = dropobjA.GetComponent<TMP_Dropdown>();
-
-        List<string> options = new List<string>();
-        options.Add("None");
-        foreach (var option in bugList)
+        try
         {
-            options.Add(option.GetComponent<Player>().name);
+
+            TMP_Dropdown dropOptA;
+            GameObject dropobjA = GameObject.Find("Dropdown");
+            dropOptA = dropobjA.GetComponent<TMP_Dropdown>();
+
+            List<string> options = new List<string>();
+            options.Add("None");
+            foreach (var option in bugList)
+            {
+                options.Add(option.GetComponent<Player>().name);
+            }
+            dropOptA.ClearOptions();
+            dropOptA.AddOptions(options);
         }
-        dropOptA.ClearOptions();
-        dropOptA.AddOptions(options);
+        catch
+        {
+            Debug.Log("Was not able to add bugs to dropdown.");
+        }
     }
 
 }

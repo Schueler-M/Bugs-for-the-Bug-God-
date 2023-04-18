@@ -28,7 +28,14 @@ public class townScript : MonoBehaviour
     {
         curr = visibleOpt.hub;
         data = GameObject.Find("DataManager").GetComponent<dataManager>();
-        altInvDrop = GameObject.Find("AltDropdown").GetComponent<InvDropdown>();
+        try
+        {
+            altInvDrop = GameObject.Find("AltDropdown").GetComponent<InvDropdown>();
+        }
+        catch
+        {
+            ;
+        }
         data.addBugsToADropDown();
 
     }
