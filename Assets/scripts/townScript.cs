@@ -27,7 +27,6 @@ public class townScript : MonoBehaviour
     void Start()
     {
         curr = visibleOpt.hub;
-        inv.Load();
         data = GameObject.Find("DataManager").GetComponent<dataManager>();
         altInvDrop = GameObject.Find("AltDropdown").GetComponent<InvDropdown>();
         data.addBugsToADropDown();
@@ -83,7 +82,6 @@ public class townScript : MonoBehaviour
                     if (inv.inventory[i] == null)
                     {
                         inv.inventory[i] = "sword";
-                        inv.Save();
                         return;
                     }
                 }
@@ -108,7 +106,6 @@ public class townScript : MonoBehaviour
                     if (inv.inventory[i] == null)
                     {
                         inv.inventory[i] = "hatchet";
-                        inv.Save();
                         return;
                     }
                 }
@@ -133,7 +130,6 @@ public class townScript : MonoBehaviour
                     if (inv.inventory[i] == null)
                     {
                         inv.inventory[i] = "swatchet";
-                        inv.Save();
                         return;
                     }
                 }
