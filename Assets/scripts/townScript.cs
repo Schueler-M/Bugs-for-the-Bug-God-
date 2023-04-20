@@ -22,14 +22,20 @@ public class townScript : MonoBehaviour
     public Texture sword;
     public Texture hatchet;
     public Texture swatchet;
-    dataManager data;
+    public dataManager data;
     InvDropdown altInvDrop;
     void Start()
     {
         curr = visibleOpt.hub;
-        inv.Load();
         data = GameObject.Find("DataManager").GetComponent<dataManager>();
-        altInvDrop = GameObject.Find("AltDropdown").GetComponent<InvDropdown>();
+        try
+        {
+            altInvDrop = GameObject.Find("AltDropdown").GetComponent<InvDropdown>();
+        }
+        catch
+        {
+            ;
+        }
         data.addBugsToADropDown();
 
     }
@@ -69,19 +75,20 @@ public class townScript : MonoBehaviour
 
     public void purchaseItem1()
     {
+        data = GameObject.Find("DataManager").GetComponent<dataManager>();
         if (curr == visibleOpt.blacksmith)
         {
             if (data.gold >= 100)
             {
                 altInvDrop = GameObject.Find("AltDropdown").GetComponent<InvDropdown>();
                 data.inv.Add("sword");
+                data.gold -= 100;
                 altInvDrop.refreshAltInv();
                 for (int i = 0; i < 9; i++)
                 {
                     if (inv.inventory[i] == null)
                     {
                         inv.inventory[i] = "sword";
-                        inv.Save();
                         return;
                     }
                 }
@@ -92,6 +99,7 @@ public class townScript : MonoBehaviour
 
     public void purchaseItem2()
     {
+        data = GameObject.Find("DataManager").GetComponent<dataManager>();
         if (curr == visibleOpt.blacksmith)
         {
             if (data.gold >= 100)
@@ -105,11 +113,9 @@ public class townScript : MonoBehaviour
                     if (inv.inventory[i] == null)
                     {
                         inv.inventory[i] = "hatchet";
-                        inv.Save();
                         return;
                     }
                 }
-                data.gold += 100;
                 Debug.Log("No Open Inv Slot");
             }
         }
@@ -117,6 +123,7 @@ public class townScript : MonoBehaviour
 
     public void purchaseItem3()
     {
+        data = GameObject.Find("DataManager").GetComponent<dataManager>();
         if (curr == visibleOpt.blacksmith)
         {
             if (data.gold >= 150)
@@ -130,7 +137,6 @@ public class townScript : MonoBehaviour
                     if (inv.inventory[i] == null)
                     {
                         inv.inventory[i] = "swatchet";
-                        inv.Save();
                         return;
                     }
                 }
