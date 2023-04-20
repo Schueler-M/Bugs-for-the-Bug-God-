@@ -24166,11 +24166,14 @@ MonoBehaviour:
   name: 
   price: 0
   upgradePoints: 0
+  weapon: None
+  specialAttack: {fileID: 4374080980790635587, guid: 04ce9bd2e9985034887e1861a2cd60b5, type: 3}
   AtkSprite: {fileID: 0}
   AtkSprite2: {fileID: 0}
   AtkSprite3: {fileID: 0}
   hitSound: {fileID: 0}
   deathSound: {fileID: 0}
+  isSpecial: 0
   right_camrot: 0
   left_camrot: 0
   mbpr: 0

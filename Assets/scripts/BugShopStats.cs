@@ -103,7 +103,11 @@ public class BugShopStats : MonoBehaviour
     }
     public void buyBug()
     {
-        curBug = BugGenScript.bugList[BugI];
+        try
+        {
+            curBug = BugGenScript.bugList[BugI];
+        }
+        catch { return; }
         ant antScript = curBug.GetComponent<ant>();
         spider spiderScript = curBug.GetComponent<spider>();
         beetle beetleScript = curBug.GetComponent<beetle>();
@@ -135,6 +139,7 @@ public class BugShopStats : MonoBehaviour
                 data.gold -= beetleScript.startPrice;
             }
         }
+        BugGenScript.bugList.Remove(curBug);
         data.addBugsToADropDown();
     }
 }

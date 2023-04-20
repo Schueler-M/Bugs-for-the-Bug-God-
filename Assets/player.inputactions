@@ -60,6 +60,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "SpecialAttack",
+                    "type": "Button",
+                    "id": "e123082c-f7ef-4f60-a977-aca6552e98b6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "RotateCamRight",
                     "type": "Button",
                     "id": "55f0d91e-f18e-407d-a1f4-020abace1604",
@@ -329,6 +338,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "RotateCamLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7ab450fc-ad2a-400d-aa63-de638dea55c8",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpecialAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

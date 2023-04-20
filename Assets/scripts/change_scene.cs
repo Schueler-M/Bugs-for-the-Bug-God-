@@ -12,6 +12,7 @@ public class change_scene : MonoBehaviour
     public GameObject ant_prefab;
     public GameObject spider_prefab;
     public GameObject beetle_prefab;
+    public GameObject errorObj;
     void Start()
     {
 
@@ -47,7 +48,7 @@ public class change_scene : MonoBehaviour
         List<int> values = new List<int>();
         GameObject dropobjA = GameObject.Find("Dropdown");
         TMP_Dropdown dropOptA = dropobjA.GetComponent<TMP_Dropdown>();
-        print(dropobjA);
+        //print(dropobjA);
         values.Add(dropOptA.value);
 
         GameObject dropobjB = GameObject.Find("DropdownB");
@@ -58,6 +59,7 @@ public class change_scene : MonoBehaviour
         TMP_Dropdown dropOptC = dropobjC.GetComponent<TMP_Dropdown>();
         values.Add(dropOptC.value);
         int indexA = 0;
+        TextMeshProUGUI error = errorObj.GetComponent<TextMeshProUGUI>();
         foreach (int i in values)
         {
             if (i != 0)
@@ -68,6 +70,8 @@ public class change_scene : MonoBehaviour
                     if (i == j && indexA != indexB)
                     {
                         print("You chose the same bug twice!");
+                        error.text = "You chose the same bug twice!";
+                        error.gameObject.SetActive(true);
                         yield break;
                     }
                     indexB++;
@@ -75,6 +79,8 @@ public class change_scene : MonoBehaviour
             }
             if (i == 0)//i == 0 && indexA == 0
             {
+                error.text = "You need a to fill all bugs!";
+                error.gameObject.SetActive(true);
                 print("You need a to fill all bugs!");
                 yield break;
             }
