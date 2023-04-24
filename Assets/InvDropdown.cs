@@ -14,6 +14,7 @@ public class InvDropdown : MonoBehaviour
         data = GameObject.Find("DataManager").GetComponent<dataManager>();
         dropOpt = GetComponent<TMP_Dropdown>();
         List<string> options = new List<string>();
+        options.Add("None");
         foreach (var option in data.inv)
         {
             options.Add(option);

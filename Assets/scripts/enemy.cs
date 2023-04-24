@@ -22,6 +22,7 @@ public class enemy : MonoBehaviour
     bool needDefHeal;
     GameObject doHit;
     bool isAttacking = false;
+    public bool isSpecial = false;
     ParticleSystem partSys;
 
     public Vector3 walk_to;
@@ -51,10 +52,11 @@ public class enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         // If player is a close distance it will move towards the player
         // If player is not close it will move at random
-        if (Vector3.Distance(player.transform.position, transform.position) <= 20)
+        float distFromPlayer = Vector3.Distance(player.transform.position, transform.position);
+        if (distFromPlayer <= 20)
         {
             player_dest = true;
             GameObject curBug = null;
@@ -113,7 +115,14 @@ public class enemy : MonoBehaviour
                     index = atkIndex;
                     enemyBugs[index].gameObject.SetActive(true);
                 }
-                AttackWrapper();
+                if (enemyBugs[index].sp > 0 && Random.value < 0.33)
+                {
+                    SpecialAttackWrapper();
+                }
+                else
+                {
+                    AttackWrapper();
+                }
             }
             else
             {
@@ -127,6 +136,10 @@ public class enemy : MonoBehaviour
                 enemyBugs[index].gameObject.SetActive(false);
                 index = speedIndex;
                 enemyBugs[index].gameObject.SetActive(true);
+            }
+            if (enemyBugs[index].sp > 0 && Random.value < 0.33 && (distFromPlayer <= 15))
+            {
+                SpecialAttackWrapper();
             }
 
         }
@@ -148,22 +161,47 @@ public class enemy : MonoBehaviour
         if(other.tag == "Player")
             if (hitCooldown <= 0)
             {
-                hitCooldown = 0.5f;
-                int dmg = (ps.playerBugs[ps.index].atk * 2) - enemyBugs[index].def;
-                if(dmg <= 10)
+                if (ps.isSpecial == false)
                 {
-                    dmg = 10;
+                    hitCooldown = 0.5f;
+                    int dmg = (ps.playerBugs[ps.index].atk * 2) - enemyBugs[index].def;
+                    if (dmg <= 10)
+                    {
+                        dmg = 10;
+                    }
+                    enemyBugs[index].hp -= dmg;
+                    enemyBugs[index].damageHeal += dmg / 3;
+                    audioP.clip = ps.hitSound;
+                    if (enemyBugs[index].hp < 0) //DEAD
+                    {
+                        audioP.clip = ps.deathSound;
+                        partSys.Play();
+                        findBest();
+                    }
+                    audioP.Play();
                 }
-                enemyBugs[index].hp -= dmg;
-                enemyBugs[index].damageHeal += dmg / 3;
-                audioP.clip = ps.hitSound;   
-                if (enemyBugs[index].hp < 0) //DEAD
+                else
                 {
-                    audioP.clip = ps.deathSound;
-                    partSys.Play();
-                    findBest();
+                    hitCooldown = 1f;
+                    special ss = ps.playerBugs[ps.index].specialAttack.GetComponent<special>();
+                    int dmg = (ps.playerBugs[ps.index].atk * 2) - enemyBugs[index].def;
+                    if (dmg <= 10)
+                    {
+                        dmg = 10;
+                    }
+                    enemyBugs[index].hp -= dmg;
+                    enemyBugs[index].damageHeal += dmg / 3;
+                    audioP.clip = ps.hitSound;
+                    if (enemyBugs[index].hp < 0) //DEAD
+                    {
+                        audioP.clip = ps.deathSound;
+                        partSys.Play();
+                        findBest();
+                    }
+                    audioP.Play();
+                    enemyBugs[index].States.Add(ss.state);
+                    print("SPECIAL");
                 }
-                audioP.Play();
             }
     }
 
@@ -273,8 +311,31 @@ public class enemy : MonoBehaviour
             doHit.SetActive(false);
         }
     }
+
+    private IEnumerator SpecialAttack(float f)
+    {
+        if (isAttacking == false)
+        {
+            enemyBugs[index].sp -= 1;
+            GameObject s = enemyBugs[index].specialAttack;
+            isAttacking = true;
+            isSpecial = true;
+            GameObject new_inst = GameObject.Instantiate(s);
+            new_inst.tag = "Enemy";
+            new_inst.transform.position = enemyBugs[index].transform.position;
+            new_inst.transform.rotation = enemyBugs[index].transform.rotation;
+            yield return new WaitForSeconds(f);
+            isAttacking = false;
+            isSpecial = false;
+        }
+    }
     public void AttackWrapper()
     {
         StartCoroutine(attack(0.5f));
+    }
+
+    public void SpecialAttackWrapper()
+    {
+        StartCoroutine(SpecialAttack(1f));
     }
 }

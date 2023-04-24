@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     public string type;
     
     public float hp = 1.0f;
+    public int sp = 5;
     public int atk = 1;
     public int def = 1;
     public float damageHeal = 0;
@@ -35,6 +36,9 @@ public class Player : MonoBehaviour
     public int price = 0;
     public int upgradePoints = 0;
     public string weapon = "None";
+    public List<BugStates> States;
+    public GameObject specialAttack;
+
 
     public Sprite AtkSprite;
     public Sprite AtkSprite2;
@@ -54,6 +58,7 @@ public class Player : MonoBehaviour
     [SerializeField] Camera my_camera;
     GameObject doHit;
     bool isAttacking = false;
+    public bool isSpecial = false;
     float hitCooldown = 0.0f;
     enemy es;
     ParticleSystem partSys;
@@ -148,6 +153,10 @@ public class Player : MonoBehaviour
         StartCoroutine(attack(0.5f));
     }
 
+    public void SpecialAttackWrapper(InputAction.CallbackContext context)
+    {
+        StartCoroutine(SpecialAttack(1f));
+    }
     public void SwapLeft(InputAction.CallbackContext context)
     {
         //print("swapL");
@@ -205,6 +214,7 @@ public class Player : MonoBehaviour
         {
             doHit = playerBugs[index].transform.Find("HitBox").gameObject;
             isAttacking = true;
+            isSpecial = false;
             int chance = Random.Range(0, 3);
             if(chance == 0)
                 doHit.GetComponent<SpriteRenderer>().sprite = AtkSprite;
@@ -216,6 +226,26 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(f);
             isAttacking = false;
             doHit.SetActive(false);
+        }
+    }
+
+    private IEnumerator SpecialAttack(float f)
+    {
+        if (playerBugs[index].sp > 0)
+        {
+            if (isAttacking == false)
+            {
+                playerBugs[index].sp -= 1;
+                GameObject s = playerBugs[index].specialAttack;
+                isAttacking = true;
+                isSpecial = true;
+                GameObject new_inst = GameObject.Instantiate(s);
+                new_inst.transform.position = playerBugs[index].transform.position;
+                new_inst.transform.rotation = playerBugs[index].transform.rotation;
+                yield return new WaitForSeconds(f);
+                isAttacking = false;
+                isSpecial = false;
+            }
         }
     }
     void healHurt()
@@ -237,52 +267,102 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            if (hitCooldown <= 0)
+            if (!es.isSpecial)
             {
-                hitCooldown = 0.5f;
-                int dmg = (es.enemyBugs[es.index].atk * 2) - playerBugs[index].def;
-                if (dmg <= 10)
+                if (hitCooldown <= 0)
                 {
-                    dmg = 10;
-                }
-                if(inUsing==false)
-                {
-                    playerBugs[index].hp -= dmg;
-                }
-                
-                playerBugs[index].damageHeal += dmg / 3;
-                audioP.clip = hitSound;
-                if (playerBugs[index].hp < 0)
-                {
-                    partSys.Play();
-                    audioP.clip = deathSound;
-                    playerBugs[index].gameObject.SetActive(false);
-                    for (int i = 0; i < playerBugs.Length; i++)
+                    hitCooldown = 0.5f;
+                    int dmg = (es.enemyBugs[es.index].atk * 2) - playerBugs[index].def;
+                    if (dmg <= 10)
                     {
-                        if (playerBugs[i].hp > 0)
-                        {
-                            index = i;
-                            //Display Particles
-                            break;
-                        }
-                        if (i == 2)
-                        {
-                            //GAMEOVER
-                            dataManager data = GameObject.Find("DataManager").GetComponent<dataManager>();
-                            data.bugList.Clear();
-                            Transform dt = data.transform;
-                            foreach (Transform child in dt)
-                            {
-                                data.bugList.Add(child.gameObject);
-                            }
-                            SceneManager.LoadScene("Lose_Screen");
-                            //Destroy(gameObject);
-                        }
+                        dmg = 10;
                     }
-                    getIcons();
-                    playerBugs[index].gameObject.SetActive(true);
+                    if(inUsing==false)
+                    {
+                    playerBugs[index].hp -= dmg;
+                    }
+                    playerBugs[index].damageHeal += dmg / 3;
+                    audioP.clip = hitSound;
+                    if (playerBugs[index].hp < 0)
+                    {
+                        partSys.Play();
+                        audioP.clip = deathSound;
+                        playerBugs[index].gameObject.SetActive(false);
+                        for (int i = 0; i < playerBugs.Length; i++)
+                        {
+                            if (playerBugs[i].hp > 0)
+                            {
+                                index = i;
+                                //Display Particles
+                                break;
+                            }
+                            if (i == 2)
+                            {
+                                //GAMEOVER
+                                dataManager data = GameObject.Find("DataManager").GetComponent<dataManager>();
+                                data.bugList.Clear();
+                                Transform dt = data.transform;
+                                foreach (Transform child in dt)
+                                {
+                                    data.bugList.Add(child.gameObject);
+                                }
+                                SceneManager.LoadScene("Lose_Screen");
+                                //Destroy(gameObject);
+                            }
+                        }
+                        getIcons();
+                        playerBugs[index].gameObject.SetActive(true);
+                    }
+                    audioP.Play();
                 }
-                audioP.Play();
+            }
+            else
+            {
+                if (hitCooldown <= 0)
+                {
+                    hitCooldown = 1f;
+                    special ss = es.enemyBugs[es.index].specialAttack.GetComponent<special>();
+                    int dmg = (es.enemyBugs[es.index].atk * 2) - playerBugs[index].def;
+                    if (dmg <= 10)
+                    {
+                        dmg = 10;
+                    }
+                    playerBugs[index].hp -= dmg;
+                    playerBugs[index].damageHeal += dmg / 3;
+                    playerBugs[index].States.Add(ss.state);
+                    audioP.clip = hitSound;
+                    if (playerBugs[index].hp < 0)
+                    {
+                        partSys.Play();
+                        audioP.clip = deathSound;
+                        playerBugs[index].gameObject.SetActive(false);
+                        for (int i = 0; i < playerBugs.Length; i++)
+                        {
+                            if (playerBugs[i].hp > 0)
+                            {
+                                index = i;
+                                //Display Particles
+                                break;
+                            }
+                            if (i == 2)
+                            {
+                                //GAMEOVER
+                                dataManager data = GameObject.Find("DataManager").GetComponent<dataManager>();
+                                data.bugList.Clear();
+                                Transform dt = data.transform;
+                                foreach (Transform child in dt)
+                                {
+                                    data.bugList.Add(child.gameObject);
+                                }
+                                SceneManager.LoadScene("Lose_Screen");
+                                //Destroy(gameObject);
+                            }
+                        }
+                        getIcons();
+                        playerBugs[index].gameObject.SetActive(true);
+                    }
+                    audioP.Play();
+                }
             }
         }
     }
@@ -363,6 +443,7 @@ public class Player : MonoBehaviour
             _dashingCooldown = beetleScript._dashingCooldown;
             _dashingDuration = beetleScript._dashingDuration;
         }
+        sp = 5;
 
     }
     bool isAlive(int i)
@@ -370,5 +451,25 @@ public class Player : MonoBehaviour
         if (playerBugs[i].hp >= 0)
             return true;
         return false;
+    }
+
+    void processStates()
+    {
+        for(int i = 0; i<States.Count; i++)
+        {
+            if(States[i].sName == "Fire")
+            {
+                hp -= 30 * Time.deltaTime;
+            }
+            else if (States[i].sName == "Poison")
+            {
+                hp -= 30 * Time.deltaTime;
+            }
+            States[i].sLast -= Time.deltaTime;
+            if(States[i].sLast <= 0)
+            {
+                States.Remove(States[i]);
+            }
+        }
     }
 }
