@@ -11,8 +11,8 @@ public class InputHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var h = Input.GetAxis("Horizontal");
-        var v = Input.GetAxis("Vertical");
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
 
         InputVector = new Vector2(h, v);
 

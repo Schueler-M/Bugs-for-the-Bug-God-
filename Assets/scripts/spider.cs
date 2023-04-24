@@ -5,23 +5,42 @@ using UnityEngine;
 
 public class spider : Player
 {
+    [Header("Movement")]
+    public int curSpeed = 8;
+    float m_RotationSpeed = 6f;
+
+    [Header("Dash")]
+    float _dashingVel = 9f;
+    float _dashingTime = 0.4f;
+    float _dashingCooldown = 3f;
+    float _dashingDuration = 1f;
+
     // Start is called before the first frame update
     public float curhp = 800;
     HealthBarScript hpBar;
     public GameObject projectile;
     public float launchVelocity = 700f;
     private bool shot_taken = false;
-    public int curSpeed = 10;
     public int curAtk = 80;
     public int curDef = 50;
     public int startPrice = 600;
     void Start()
     {
         hpBar = transform.Find("HealthBar Canvas").GetComponent<HealthBarScript>();
-        speed = curSpeed;
+        
         hp = curhp;
         atk = curAtk;
         def = curDef;
+
+        //movement
+        speed = curSpeed;
+        base.m_RotationSpeed = m_RotationSpeed;
+
+        //dash
+        base.m_RotationSpeed = m_RotationSpeed;
+        base._dashingTime = _dashingTime;
+        base._dashingCooldown = _dashingCooldown;
+        base._dashingDuration= _dashingDuration;
     }
 
     // Update is called once per frame

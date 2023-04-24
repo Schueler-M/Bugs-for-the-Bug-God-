@@ -131,7 +131,7 @@ public class enemy : MonoBehaviour
 
         }
         healHurt();
-        transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
+        //transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
 
         //Transform.RotateAround(transform.position,Vector3.up,90)
     }
@@ -169,7 +169,7 @@ public class enemy : MonoBehaviour
 
     void findBest()
     {
-        int fastestSpeed = 0;
+        float fastestSpeed = 0;
         int biggestAtk = 0;
         int biggestDef = 0;
         int deadCount = 0;

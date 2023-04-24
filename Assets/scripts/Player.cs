@@ -8,9 +8,25 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    //ant
+    public bool inUsing;
+
+    [Header("Movement")]
+    public BasicMove bm;
+    public float speed = 1f;
+    public float m_RotationSpeed = 5f;
+
+    [Header("Dash")]
+    public Dash dash;
+    public float _dashingVel = 14f;
+    public float _dashingTime = 0.5f;
+    public float _dashingCooldown = 2f;
+    public float _dashingDuration = 1f;
+
     public Player[] playerBugs;
     public int index = 0;
-    public int speed = 1;
+    public string type;
+    
     public float hp = 1.0f;
     public int atk = 1;
     public int def = 1;
@@ -35,7 +51,7 @@ public class Player : MonoBehaviour
     MidGameUI ui_script_obj;
     bool aim_needs_adjusted;
     Ray aim_ray;
-    Camera my_camera;
+    [SerializeField] Camera my_camera;
     GameObject doHit;
     bool isAttacking = false;
     float hitCooldown = 0.0f;
@@ -49,11 +65,21 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        //Set movement
+        bm.speed = speed;
+        bm.m_RotationSpeed = m_RotationSpeed;
+
+        //Set dash
+        dash._dashingVel = _dashingVel;
+        dash._dashingTime = _dashingTime;
+        dash._dashingCooldown = _dashingCooldown;
+        dash._dashingDuration= _dashingDuration;    
+
         audioP = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         ui_game_obj = GameObject.Find("MidGameUI");
         ui_script_obj = ui_game_obj.GetComponent<MidGameUI>();
-        my_camera = transform.Find("Main Camera").GetComponent<Camera>();
+        
         StartCoroutine(getStartImages());
         es = GameObject.Find("Enemy").GetComponent<enemy>();
         partSys = transform.GetComponent<ParticleSystem>();
@@ -64,6 +90,16 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        //update movement
+        bm.speed = speed;
+        bm.m_RotationSpeed = m_RotationSpeed;
+
+        //update dash
+        dash._dashingVel = _dashingVel;
+        dash._dashingTime = _dashingTime;
+        dash._dashingCooldown = _dashingCooldown;
+        dash._dashingDuration = _dashingDuration;
+
         mbpl = false;
         mbpr = false;
 
@@ -74,7 +110,7 @@ public class Player : MonoBehaviour
         Vector3 Velocity =  (getx + gety) * playerBugs[index].speed;
         //playerBugs[index].hp = hp;
         //print(playerBugs[index].speed);
-        rb.velocity = Velocity;
+        //rb.velocity = Velocity;
 
         if (aim_needs_adjusted)
         {
@@ -89,69 +125,23 @@ public class Player : MonoBehaviour
             }
         }
         healHurt();
-        if (right_camrot)
-        {
-            Vector3 rright = new Vector3(0, 1, 0);
-            transform.Rotate(rright);
-        }
+        resetStats();
 
-        if (left_camrot)
-        {
-            Vector3 rleft = new Vector3(0, -1, 0);
-            transform.Rotate(rleft);
-        }
-        
-    }
-    public void move(InputAction.CallbackContext context)
-    {
-        move_vector = context.ReadValue<Vector2>();
-    }
-    public void Zoom(InputAction.CallbackContext context)
-    {
-        float value = context.ReadValue<Vector2>().y;
-        if(value > 0)
-        {
-            my_camera.transform.position = Vector3.MoveTowards(my_camera.transform.position, transform.position, (.005f * value));
-        }
-        else if (value < 0)
-        {
-            my_camera.transform.Translate((-1 * my_camera.transform.forward) * Time.deltaTime * (-1*value), Space.World);
-        }
-    }
-
-    public void look_at(InputAction.CallbackContext context)
-    {
-        //print("IN LOOK");
-        PlayerInput input_comp = GetComponent<PlayerInput>();
-        if (input_comp.currentControlScheme == "Keyboard&Mouse")
-        {
-            Vector2 look_vector = context.ReadValue<Vector2>();
-            //print("Look = " + look_vector + " control = " + input_comp.currentControlScheme);
-            Vector2 mouse_pos = Input.mousePosition;
-
-            aim_needs_adjusted = true;
-            aim_ray = my_camera.ScreenPointToRay(mouse_pos);
-        }
 
     }
 
-    public void RotateCameraRight(InputAction.CallbackContext context)
-    {
-        if (mbpr == false)
-        {
-            right_camrot = !right_camrot;
-            mbpr = true;
-        }
-    }
-
-    public void RotateCameraLeft(InputAction.CallbackContext context)
-    {
-        if (mbpl == false)
-        {
-            left_camrot = !left_camrot;
-            mbpl = true;
-        }
-    }
+    //public void Zoom(InputAction.CallbackContext context)
+    //{
+    //    float value = context.ReadValue<Vector2>().y;
+    //    if(value > 0)
+    //    {
+    //        my_camera.transform.position = Vector3.MoveTowards(my_camera.transform.position, transform.position, (.005f * value));
+    //    }
+    //    else if (value < 0)
+    //    {
+    //        my_camera.transform.Translate((-1 * my_camera.transform.forward) * Time.deltaTime * (-1*value), Space.World);
+    //    }
+    //}
 
     public void AttackWrapper(InputAction.CallbackContext context)
     {
@@ -255,7 +245,11 @@ public class Player : MonoBehaviour
                 {
                     dmg = 10;
                 }
-                playerBugs[index].hp -= dmg;
+                if(inUsing==false)
+                {
+                    playerBugs[index].hp -= dmg;
+                }
+                
                 playerBugs[index].damageHeal += dmg / 3;
                 audioP.clip = hitSound;
                 if (playerBugs[index].hp < 0)
@@ -313,15 +307,27 @@ public class Player : MonoBehaviour
     }
     public void resetStats()
     {
-        ant antScript = GetComponent<ant>();
-        spider spiderScript = GetComponent<spider>();
-        beetle beetleScript = GetComponent<beetle>();
+
+        ant antScript = GetComponentInChildren<ant>();
+        spider spiderScript = GetComponentInChildren<spider>();
+        beetle beetleScript = GetComponentInChildren<beetle>();
+
         if(antScript != null)
         {
+            inUsing=antScript.inUsing;
             hp = antScript.curhp;
             atk = antScript.curAtk;
             def = antScript.curDef;
+
+            //movement
             speed = antScript.curSpeed;
+            m_RotationSpeed=antScript.m_RotationSpeed;
+
+            //dash
+            _dashingVel = antScript._dashingVel;
+            _dashingTime= antScript._dashingTime;
+            _dashingCooldown= antScript._dashingCooldown;
+            _dashingDuration= antScript._dashingDuration;
         }
         else if (spiderScript != null)
         {
@@ -329,6 +335,16 @@ public class Player : MonoBehaviour
             atk = spiderScript.curAtk;
             def = spiderScript.curDef;
             speed = spiderScript.curSpeed;
+
+            //movement
+            speed = spiderScript.curSpeed;
+            m_RotationSpeed = spiderScript.m_RotationSpeed;
+
+            //dash
+            _dashingVel = spiderScript._dashingVel;
+            _dashingTime = spiderScript._dashingTime;
+            _dashingCooldown = spiderScript._dashingCooldown;
+            _dashingDuration = spiderScript._dashingDuration;
         }
         else
         {
@@ -336,6 +352,16 @@ public class Player : MonoBehaviour
             atk = beetleScript.curAtk;
             def = beetleScript.curDef;
             speed = beetleScript.curSpeed;
+
+            //movement
+            speed = beetleScript.curSpeed;
+            m_RotationSpeed = beetleScript.m_RotationSpeed;
+
+            //dash
+            _dashingVel = beetleScript._dashingVel;
+            _dashingTime = beetleScript._dashingTime;
+            _dashingCooldown = beetleScript._dashingCooldown;
+            _dashingDuration = beetleScript._dashingDuration;
         }
 
     }

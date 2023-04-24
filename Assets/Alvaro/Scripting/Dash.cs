@@ -5,66 +5,64 @@ using UnityEngine;
 public class Dash : MonoBehaviour
 {
     [Header("Dashing")]
-    [SerializeField] private float _dashingVel = 14f;
-    [SerializeField] private float _dashingTime = 0.5f;
-    private bool isDashing;
-    private bool _canDash=true;
+    public float _dashingVel = 14f;
+    public float _dashingTime = 0.5f;
+    public float _dashingCooldown = 2f;
+    public float _dashingDuration = 1f;
+    
+    
+    private bool isDashing = false;
+    private bool _canDash = true;
 
     private Rigidbody rb;
     private Vector3 dir;
 
 
-    // Start is called before the first frame update
     void Start()
     {
-        rb=GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && _canDash)
+
+        if (Input.GetKeyDown(KeyCode.Space) && _canDash)
         {
             isDashing = true;
-            _canDash= false;
-            dir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            _canDash = false;
+            Vector3 facingDirection = transform.forward;
+            dir = facingDirection;
+            //dir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-            if(dir == Vector3.zero)
-            {
-                dir = new Vector3(transform.localScale.x, 0, 0);
-            }
-            StartCoroutine(stopDashing());
-        }
+            //if (dir == Vector3.zero)
+            //{
+            //    //Vector3 facingDirection = transform.forward;
+            //    dir = facingDirection;
+            //}
 
-        if (isDashing)
-        {
-            print("Ho");
-            rb.velocity=dir.normalized*_dashingVel;
-            return;
+            StartCoroutine(dash());
         }
     }
 
-    private IEnumerator stopDashing()
+    private IEnumerator dash()
     {
-        print("Mo");
-        yield return new WaitForSeconds(_dashingTime);
-        isDashing= false;
+        rb.velocity = dir.normalized * _dashingVel;
+
+        yield return new WaitForSecondsRealtime(_dashingTime);
+
+        float t = 0;
+        Vector3 startVelocity = rb.velocity;
+
+        while (t < 1)
+        {
+            t += Time.deltaTime / _dashingDuration;
+            rb.velocity = Vector3.Lerp(startVelocity, Vector3.zero, t);
+            yield return null;
+        }
+
+        isDashing = false;
         _canDash = true;
     }
-
-    //private void FixedUpdate()
-    //{
-    //    if(isDashing==true)
-    //    {
-    //        Dashing();
-    //    }
-    //}
-
-    //private void Dashing()
-    //{
-    //    print("Hola");
-    //    rb.AddForce(transform.forward * dashSpeed, ForceMode.Impulse);
-    //    isDashing = false;
-    //    print("Adios");
-    //}
 }
+
+

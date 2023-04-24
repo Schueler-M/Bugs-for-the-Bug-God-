@@ -61,22 +61,38 @@ public class BugGenerator : MonoBehaviour
                 new_inst = GameObject.Instantiate(ant_prefab,transform);
                 antScript = new_inst.GetComponent<ant>();
                 antScript.name = antNames[Random.Range(0,antNames.Length)];
-                antScript.curSpeed += Random.Range(-2, 2);
+                
                 antScript.curhp += Random.Range(-50, 50);
                 antScript.curAtk += Random.Range(-10, 10);
                 antScript.curDef += Random.Range(-10, 10);
                 antScript.startPrice += Random.Range(-100, 100);
+
+                //movement
+                antScript.curSpeed += Random.Range(-2, 2);
+                antScript.m_RotationSpeed += Random.Range(-1, 1);
+
+                //dash
+                antScript._dashingVel += Random.Range(-2, 2);
+                antScript._dashingCooldown += Random.Range(-1.5f, 1.5f);
+
             }
             else if (rand == 1)
             {
                 new_inst = GameObject.Instantiate(spider_prefab, transform);
                 spiderScript = new_inst.GetComponent<spider>();
                 spiderScript.name = spiderNames[rand = Random.Range(0, spiderNames.Length)];
-                spiderScript.curSpeed += Random.Range(-2, 2);
                 spiderScript.curhp += Random.Range(-50, 50);
                 spiderScript.curAtk += Random.Range(-10, 10);
                 spiderScript.curDef += Random.Range(-10, 10);
                 spiderScript.startPrice += Random.Range(-100, 100);
+
+                //movement
+                spiderScript.curSpeed += Random.Range(-2, 2);
+                spiderScript.m_RotationSpeed += Random.Range(-1, 1);
+
+                //dash
+                spiderScript._dashingVel += Random.Range(-2, 2);
+                spiderScript._dashingCooldown += Random.Range(-1.5f, 1.5f);
             }
             else
             {
@@ -84,11 +100,18 @@ public class BugGenerator : MonoBehaviour
                 beetleScript = new_inst.GetComponent<beetle>();
                 beetleScript.name = beetleNames[rand = Random.Range(0, beetleNames.Length)];
                 beetleScript = new_inst.GetComponent<beetle>();
-                beetleScript.curSpeed += Random.Range(-2, 2);
                 beetleScript.curhp += Random.Range(-50, 50);
                 beetleScript.curAtk += Random.Range(-10, 10);
                 beetleScript.curDef += Random.Range(-10, 10);
                 beetleScript.startPrice += Random.Range(-100, 100);
+
+                //movement
+                beetleScript.curSpeed += Random.Range(-2, 2);
+                beetleScript.m_RotationSpeed += Random.Range(-1, 1);
+
+                //dash
+                beetleScript._dashingVel += Random.Range(-2, 2);
+                beetleScript._dashingCooldown += Random.Range(-1.5f, 1.5f);
             }
             new_inst.SetActive(false);
             bugList.Add(new_inst.gameObject);//= new_inst;//add to buglist

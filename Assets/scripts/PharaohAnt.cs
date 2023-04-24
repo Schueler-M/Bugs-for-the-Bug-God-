@@ -6,11 +6,11 @@ using UnityEngine;
 public class PharaohAnt : MonoBehaviour
 {
 
-    public Material Trans_material;
+    //public Material Trans_material;
 
     public BasicMove bm;
     private GameObject[] enemies;
-    public float abilityTime=4f;
+    public float abilityTime=3f;
     public float cooldownTime;
     private bool inCooldown;
 
@@ -30,6 +30,7 @@ public class PharaohAnt : MonoBehaviour
 
         if(inCooldown==false && Input.GetKeyDown(KeyCode.F)) 
         {
+            print("I'm the ant");
             StartCoroutine(cooldownController());
             inCooldown = true;
             StartCoroutine(powerUp());
@@ -46,13 +47,13 @@ public class PharaohAnt : MonoBehaviour
 
     IEnumerator powerUp()    //This coroutine control the time that the powerup is happening
     {
-        Trans_material.SetFloat("_Opacity", 1f);
+        //Trans_material.SetFloat("_Opacity", 1f);
         foreach (GameObject ene in enemies)
         {
             Physics.IgnoreCollision(ene.GetComponent<Collider>(), GetComponent<Collider>());
         }
         yield return new WaitForSeconds(abilityTime);
-        Trans_material.SetFloat("_Opacity", 0.5f);
+        //Trans_material.SetFloat("_Opacity", 0.5f);
         foreach (GameObject ene in enemies)
         {
             Physics.IgnoreCollision(ene.GetComponent<Collider>(), GetComponent<Collider>(), false);
