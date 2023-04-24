@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
         hitCooldown -= Time.deltaTime;
         Vector3 getx = transform.forward.normalized * move_vector.y;
         Vector3 gety = transform.right.normalized * move_vector.x;
-        Vector3 Velocity =  (getx + gety) * playerBugs[index].speed;
+        //Vector3 Velocity =  (getx + gety) * playerBugs[index].curSpeed;
         //playerBugs[index].hp = hp;
         //print(playerBugs[index].speed);
         //rb.velocity = Velocity;
